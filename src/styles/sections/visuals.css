@@ -64,7 +64,7 @@
   position:relative;
   width:100%;
   height:100%;
-  border-radius:4px;
+  border-radius:8px;
   overflow:hidden;
   background:var(--color-hairline);
 }
@@ -116,18 +116,24 @@
   .visuals-title{ grid-column:1; }
   .visuals-intro{ grid-column:1; padding-top:8px; }
 
-  .visuals-grid__tag{ display:none; } /* не влезают в узкие тайлы на мобиле */
+  /* тайлы теперь на всю ширину (одна колонка) — тег с названием
+     снова влезает, поэтому не скрываем его, как раньше при сетке 2×N */
+  .visuals-grid__tag{ top:14px; }
 
-  /* 2 в ряд, а не 3: высокий тайл слева на две строки, справа от
-     него — 2 и 3 друг под другом, ниже отдельным рядом — 4 и 5 */
+  /* 2 в ряд выходило слишком мелко — просто одна колонка, тайлы друг
+     под другом по порядку */
   .visuals-grid{
-    grid-template-columns:repeat(2, 1fr);
+    grid-template-columns:1fr;
     padding:24px 0 56px;
     gap:8px;
   }
-  .visuals-grid__item:nth-child(1){ grid-column:1; grid-row:1 / span 2; }
-  .visuals-grid__item:nth-child(2){ grid-column:2; grid-row:1; }
-  .visuals-grid__item:nth-child(3){ grid-column:2; grid-row:2; }
-  .visuals-grid__item:nth-child(4){ grid-column:1; grid-row:3; }
-  .visuals-grid__item:nth-child(5){ grid-column:2; grid-row:3; }
+  .visuals-grid__item:nth-child(1),
+  .visuals-grid__item:nth-child(2),
+  .visuals-grid__item:nth-child(3),
+  .visuals-grid__item:nth-child(4),
+  .visuals-grid__item:nth-child(5){
+    grid-column:1;
+    grid-row:auto;
+    aspect-ratio:1;
+  }
 }

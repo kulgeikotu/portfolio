@@ -23,7 +23,7 @@
 .mobile-menu-panel{
   position:absolute;
   inset:12px;
-  border-radius:4px;
+  border-radius:8px;
   background:rgba(33,32,31,0.96);
   color:#ffffff;
   display:flex;

@@ -116,7 +116,7 @@
   width:50%;
   flex-shrink:0;
   background:var(--color-photo-bg);
-  border-radius:4px;
+  border-radius:8px;
   overflow:hidden;
   /* высота считается от вьюпорта: хедер+герой должны влезать в первый
      экран, а 140px белого отступа после секции — уже можно за скроллом.

@@ -1,6 +1,6 @@
 {
   "items": [
-    { "id": "visual-1", "size": "tall",   "cover": "/images/shared/visuals/visual-1.webp", "alt": "Экран трекера настроения: недельный календарь и объёмная цветочная визуализация с разбивкой по спокойствию, грусти и тревоге в процентах", "label": "Трекер настроения", "href": "/visuals/visual-1.html" },
+    { "id": "visual-1", "size": "tall",   "cover": "/images/shared/visuals/visual-1.webp", "coverMobile": "/images/shared/visuals/visual-1-mobile.webp", "alt": "Экран трекера настроения: недельный календарь и объёмная цветочная визуализация с разбивкой по спокойствию, грусти и тревоге в процентах", "label": "Трекер настроения", "href": "/visuals/visual-1.html" },
     { "id": "visual-2", "size": "square", "cover": "/images/shared/visuals/visual-2.webp", "alt": "Экран умного дома «Лачуга»: карточки устройств по комнатам — лампа, колонка, чайник, робот-пылесос", "label": "Умный дом", "href": "/visuals/visual-2.html" },
     { "id": "visual-3", "size": "square", "cover": "/images/shared/visuals/visual-3.webp", "alt": "Календарь встреч: расписание на месяц слева и события по дням справа, с AI-рекомендацией пересмотреть перегруженную неделю", "label": "Календарь встреч", "href": "/visuals/visual-3.html" },
     { "id": "visual-4", "size": "square", "cover": "/images/shared/visuals/visual-4.webp", "alt": "Раздел аналитики встреч: количество созданных и завершённых встреч и график их динамики по дням", "label": "Статистика встреч", "href": "/visuals/visual-4.html" },

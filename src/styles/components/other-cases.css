@@ -40,7 +40,7 @@
   display:block;
   width:100%;
   aspect-ratio:907 / 616;
-  border-radius:4px;
+  border-radius:8px;
   overflow:hidden;
   background:var(--case-accent, var(--color-photo-bg));
   margin-top:16px;

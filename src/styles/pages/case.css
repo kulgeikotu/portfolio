@@ -408,7 +408,7 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
   width:100%;
   height:auto;
   display:block;
-  border-radius:4px;
+  border-radius:8px;
 }
 .case-flow figcaption{
   margin-top:16px;
@@ -437,7 +437,7 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
 .case-quote{
   position:relative;
   overflow:hidden; /* обрезаем блик по границе картинки */
-  border-radius:4px; /* совпадает с .case-shot img — сама figure тоже скруглена */
+  border-radius:8px; /* совпадает с .case-shot img — сама figure тоже скруглена */
 }
 .case-quote::before{
   content:"";
@@ -465,7 +465,7 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
   width:100%;
   min-height:120px;
   background:#E4E0DA;
-  border-radius:4px;
+  border-radius:8px;
   padding:24px;
   box-sizing:border-box;
   font-family:var(--font-body);
@@ -494,7 +494,7 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
   width:100%;
   height:auto;
   display:block;
-  border-radius:4px;
+  border-radius:8px;
 }
 .case-shot figcaption{
   margin-top:16px;
@@ -760,7 +760,7 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
   display:block;
   width:100%;
   height:auto;
-  border-radius:4px;
+  border-radius:8px;
 }
 .case-callouts__stage--single .case-callouts__frame{ max-width:320px; }
 .case-callouts__stage--pair .case-callouts__frame{ max-width:640px; }
@@ -769,7 +769,7 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
    вклеенными баблами/стрелками (см. docs/04_02_mobile.png) — просто два
    изображения друг под другом, без HTML-баблов и без стрелок отдельно. */
 .case-callouts__mobile-pair{ display:none; }
-.case-callouts__mobile-pair img{ display:block; width:100%; height:auto; border-radius:4px; }
+.case-callouts__mobile-pair img{ display:block; width:100%; height:auto; border-radius:8px; }
 .case-callouts__mobile-pair img + img{ margin-top:16px; }
 
 .case-callout{

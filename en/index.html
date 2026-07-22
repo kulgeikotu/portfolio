@@ -106,7 +106,14 @@
           <li class="visuals-grid__item reveal reveal--fade">
             <a class="visuals-grid__link" href="{{ ../base }}{{ this.href }}">
               <span class="visuals-grid__tag">{{ this.label }}</span>
+              {{#if this.coverMobile}}
+              <picture>
+                <source media="(max-width:900px)" srcset="{{ this.coverMobile }}">
+                <img src="{{ this.cover }}" alt="{{ this.alt }}" loading="lazy" decoding="async">
+              </picture>
+              {{else}}
               <img src="{{ this.cover }}" alt="{{ this.alt }}" loading="lazy" decoding="async">
+              {{/if}}
             </a>
           </li>
           {{/each}}

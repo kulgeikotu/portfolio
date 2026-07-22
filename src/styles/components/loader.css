@@ -13,7 +13,7 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  background:var(--color-photo-bg);
+  background:var(--color-bg);
   transition:opacity .3s ease;
 }
 .dotmatrix-loader.is-hidden{
@@ -45,4 +45,4 @@
 /* Скругление у оверлея — как у самой картинки в этом контексте, иначе
    квадратные углы лоадера торчат из-под скруглённого фото/скриншота. */
 .case-shot .dotmatrix-loader{ border-radius:8px; }
-.case-flow .dotmatrix-loader{ border-radius:6px; }
+.case-flow .dotmatrix-loader{ border-radius:8px; }

@@ -191,7 +191,7 @@
   width:100%;
   height:auto;
   display:block;
-  border-radius:4px;
+  border-radius:8px;
   aspect-ratio:var(--shot-ratio);
   object-fit:cover;
 }
@@ -215,7 +215,7 @@
   align-items:center;
   justify-content:center;
   aspect-ratio:375/812;
-  border-radius:4px;
+  border-radius:8px;
   background:color-mix(in srgb, currentColor 8%, transparent);
   font-family:var(--font-body);
   font-size:14px;

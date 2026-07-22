@@ -6,7 +6,7 @@
    при необходимости накладывается поверх текста, а не отталкивается.
    ===================================================== */
 .section-contacts{
-  padding-block:220px 32px; /* было 228px, -8px по просьбе */
+  padding-block:224px 32px; /* было 204px, по просьбе */
 }
 
 .contacts-cta{
@@ -14,7 +14,7 @@
   flex-direction:column;
   align-items:center;
   width:100%;
-  gap:48px;
+  gap:24px;
   max-width:924px;
   margin-inline:auto;
   text-align:center;
@@ -119,17 +119,18 @@
 }
 
 @media (max-width:900px){
-  .section-contacts{ padding-block:104px 32px; } /* было 56px, +48px */
+  .section-contacts{ padding-block:280px 32px; } /* было 240px, по просьбе */
 
   /* на мобиле весь блок прибит к левому краю, а не центрирован */
   .contacts-cta{
     align-items:flex-start;
     text-align:left;
-    gap:32px;
+    gap:24px;
   }
   .contacts-buttons{
     flex-direction:column-reverse; /* «Открыть резюме» визуально выше «Написать в ТГ» */
     align-items:stretch;
+    gap:8px;
   }
   .contacts-buttons .btn{ width:100%; }
 
@@ -137,11 +138,13 @@
     justify-content:flex-start;
     gap:8px;
     text-align:left;
-    margin-top:96px;
+    margin-top:40px;
   }
   .footer-email{
     max-width:none;
     margin-inline:0;
+    margin-top:16px;
+    padding-top:16px;
     text-align:left;
   }
 }

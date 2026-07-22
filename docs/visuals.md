@@ -91,7 +91,7 @@ Nav (верх) и footer (низ) — `position:fixed`, во всю ширину
   скриншоты выглядели мелко в стандартной колонке). Стоит вместе с `.visual-wide`.
 - `.visual-shot` — обёртка картинки, `aspect-ratio:var(--shot-ratio)` (+ `--shot-ratio-mobile`
   на ≤900px) через инлайн `style` на каждой `<figure>` — тот же приём, что у
-  `.case-hero__media` в кейсах (см. `docs/*.md` кейсов). border-radius 4px, как
+  `.case-hero__media` в кейсах (см. `docs/*.md` кейсов). border-radius 8px, как
   и везде на сайте.
 - `.visual-shot-stack` — вертикальный список из нескольких `.visual-shot` без
   подзаголовков между ними (визуалы 2/3/4/5 — по 2 картинки друг под другом).
