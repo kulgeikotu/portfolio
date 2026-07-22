@@ -31,7 +31,7 @@ function pageContext(lang) {
 export default defineConfig({
   // базовый путь; при деплое на свой домен оставь '/',
   // для GitHub Pages в подпапке — поменяй на '/имя-репо/'
-  base: '/',
+  base: '/portfolio/',
 
   plugins: [
     handlebars({
