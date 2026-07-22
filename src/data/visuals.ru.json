@@ -1,0 +1,9 @@
+{
+  "items": [
+    { "id": "visual-1", "size": "tall",   "cover": "/images/shared/visuals/visual-1.webp", "alt": "Визуал 1", "href": "/visuals/visual-1.html" },
+    { "id": "visual-2", "size": "square", "cover": "/images/shared/visuals/visual-2.webp", "alt": "Визуал 2", "href": "/visuals/visual-2.html" },
+    { "id": "visual-3", "size": "square", "cover": "/images/shared/visuals/visual-3.webp", "alt": "Визуал 3", "href": "/visuals/visual-3.html" },
+    { "id": "visual-4", "size": "square", "cover": "/images/shared/visuals/visual-4.webp", "alt": "Визуал 4", "href": "/visuals/visual-4.html" },
+    { "id": "visual-5", "size": "square", "cover": "/images/shared/visuals/visual-5.webp", "alt": "Визуал 5", "href": "/visuals/visual-5.html" }
+  ]
+}

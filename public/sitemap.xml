@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Перед деплоем замени example.com на свой домен -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://example.com/</loc></url>
+  <url><loc>https://example.com/cases/samokat-geo.html</loc></url>
+  <url><loc>https://example.com/cases/beeline-crm.html</loc></url>
+  <url><loc>https://example.com/cases/fortis-drivers.html</loc></url>
+  <url><loc>https://example.com/cases/fortis-ds.html</loc></url>
+  <url><loc>https://example.com/visuals/visual-1.html</loc></url>
+  <url><loc>https://example.com/visuals/visual-2.html</loc></url>
+  <url><loc>https://example.com/visuals/visual-3.html</loc></url>
+  <url><loc>https://example.com/visuals/visual-4.html</loc></url>
+  <url><loc>https://example.com/visuals/visual-5.html</loc></url>
+  <url><loc>https://example.com/en/</loc></url>
+  <url><loc>https://example.com/en/cases/samokat-geo.html</loc></url>
+  <url><loc>https://example.com/en/cases/beeline-crm.html</loc></url>
+  <url><loc>https://example.com/en/cases/fortis-drivers.html</loc></url>
+  <url><loc>https://example.com/en/cases/fortis-ds.html</loc></url>
+  <url><loc>https://example.com/en/visuals/visual-1.html</loc></url>
+  <url><loc>https://example.com/en/visuals/visual-2.html</loc></url>
+  <url><loc>https://example.com/en/visuals/visual-3.html</loc></url>
+  <url><loc>https://example.com/en/visuals/visual-4.html</loc></url>
+  <url><loc>https://example.com/en/visuals/visual-5.html</loc></url>
+</urlset>

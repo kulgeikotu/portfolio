@@ -1,0 +1,26 @@
+/* =====================================================
+   MEDIA PLACEHOLDER — переиспользуемая заглушка под картинку,
+   пока не положили реальный файл (см. .hero-media .placeholder-label)
+   ===================================================== */
+.media-placeholder{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--color-photo-bg);
+  overflow:hidden;
+}
+.media-placeholder img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.media-placeholder__label{
+  padding:16px;
+  text-align:center;
+  font-size:0.8125rem;
+  line-height:1.5;
+  letter-spacing:0.02em;
+  color:#b9b0a1;
+  word-break:break-word;
+}

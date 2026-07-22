@@ -1,0 +1,48 @@
+{
+  "meta.title": "Tatiana Kulgeiko — Product Designer",
+  "meta.description": "Full-cycle product designer — from research to launch. HR Tech, Telecom, Logistics.",
+
+  "nav.cases": "Cases",
+  "nav.experience": "Experience",
+  "nav.visuals": "Visuals",
+  "nav.contacts": "Contacts",
+  "nav.resume": "Resume",
+  "nav.toStart": "Back to top",
+  "nav.openMenu": "Open menu",
+  "nav.closeMenu": "Close menu",
+
+  "caseHeader.back": "Back",
+  "caseHeader.homeHref": "/en/",
+
+  "otherCases.title": "Other cases",
+
+  "logo.name": "TATIANA KULGEIKO",
+
+  "lang.switchTo": "RU",
+  "lang.current": "EN",
+
+  "hero.eyebrow": "HR Tech · Telecom · Logistics",
+  "hero.title": "Full-cycle product designer — from research to launch",
+  "hero.titleLines": [
+    "Full-cycle product designer —",
+    "from research",
+    "to launch"
+  ],
+  "hero.text": "I make sense of complex scenarios and simplify interaction — so it works for the business and for people.",
+  "hero.photoAlt": "Tatiana Kulgeiko, product designer",
+
+  "contacts.title": "Launching new products and improving existing ones",
+  "contacts.telegram": "Message on Telegram",
+  "contacts.resume": "Open resume",
+  "contacts.article": "Published an article",
+  "contacts.blog": "I write here sometimes",
+
+  "footer.email": "kulgeikotu@gmail.com",
+
+  "toast.emailCopied": "Email copied",
+  "toast.close": "Close notification",
+
+  "experience.intro": "8+ years of product design practice in b2b and b2e products with an audience of up to 8000+ users. Led teams of up to 7 designers.",
+
+  "visuals.intro": "UI concepts outside of product work — for practice and taste. Here I let myself stop thinking about business metrics."
+}

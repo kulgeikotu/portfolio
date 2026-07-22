@@ -1,0 +1,36 @@
+/* =====================================================
+   TOKENS — значения сверены с Figma (node 32:650)
+   ===================================================== */
+:root{
+  --color-bg:        #ffffff;
+  --color-ink:       #21201f;   /* заголовок */
+  --color-eyebrow:   #6d6c6c;   /* лейбл над заголовком */
+  --color-body:      #4b4a4a;   /* параграф */
+  --color-hairline:  #e7e5e1;
+  --color-accent:    #283BA8;   /* hover/активный пункт навигации, лого, стрелка резюме */
+  --color-photo-bg:  #f7f1eb;
+
+  --font-body:    "Golos Text", system-ui, -apple-system, sans-serif;
+  --font-display: "Geist", "Golos Text", system-ui, sans-serif;
+
+  /* холст в Figma — 1440, поля 24px десктоп / 16px мобайл */
+  --container-max: 1440px;
+  --container-pad: clamp(16px, 0.7rem + 1.4vw, 24px);
+
+  --fs-eyebrow: 14px;
+  --fs-nav:     0.9375rem;
+  --fs-h1:      56px;   /* заголовки h1-стиля: hero/кейсы/разделы/контакты */
+  --ls-h1:      -0.05em;
+  --fs-body:    1rem;
+
+  --header-h: 72px;
+}
+
+/* Заголовки h1-стиля на мобиле — 32px, line-height у них уже 1
+   (кегль-в-кегль), letter-spacing здесь свой */
+@media (max-width: 900px){
+  :root{
+    --fs-h1: 32px;
+    --ls-h1: -0.03em;
+  }
+}

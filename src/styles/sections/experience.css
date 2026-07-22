@@ -1,0 +1,130 @@
+/* =====================================================
+   Секция «experience» (node 16:7314/16:6758) — заголовок + интро
+   столбиком, ниже список мест работы с разделителями и
+   вторичная CTA «Открыть резюме» после списка.
+   Строка — условная 12-колоночная сетка: дата 2/12, компания+роль
+   4/12, описание 6/12 (стартует ровно с середины экрана).
+   ===================================================== */
+.section-experience{
+  padding-block:96px;
+}
+
+.experience-head{
+  max-width:640px;
+  margin-bottom:48px;
+}
+
+.experience-title{
+  margin:0;
+  font-family:var(--font-display);
+  font-size:var(--fs-h1);
+  font-weight:500;
+  line-height:1;
+  letter-spacing:var(--ls-h1);
+  color:var(--color-ink);
+}
+
+.experience-intro{
+  margin:16px 0 0;
+  font-family:var(--font-body);
+  font-size:1rem;
+  line-height:24px;
+  letter-spacing:-0.01em;
+  color:var(--color-body);
+}
+
+.experience-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  border-top:1px solid var(--color-hairline);
+}
+
+.experience-item{
+  position:relative;
+  display:grid;
+  grid-template-columns:2fr 4fr 6fr;
+  gap:0; /* без gap — колонка описания стартует ровно на 50%, как nav
+    в хедере и интро в Визуалах (единая вертикаль). Отступ между
+    колонками — через padding-right у period/role, см. ниже */
+  align-items:start;
+  padding-block:40px;
+  border-bottom:1px solid var(--color-hairline);
+}
+
+.experience-item__period{
+  margin:0;
+  margin-top:7px;
+  padding-right:24px;
+  line-height:1;
+  font-family:var(--font-body);
+  font-size:var(--fs-eyebrow);
+  color:var(--color-eyebrow);
+  letter-spacing:-0.03em;
+}
+
+.experience-item__role{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  padding-right:24px;
+}
+
+.experience-item__company{
+  margin:0;
+  font-family:var(--font-display);
+  font-size:1.75rem;
+  font-weight:500;
+  letter-spacing:-0.02em;
+  color:var(--color-ink);
+}
+
+.experience-item__title{
+  margin:0;
+  font-family:var(--font-body);
+  font-weight:500;
+  font-size:1rem;
+  color:var(--color-ink);
+}
+
+.experience-item__description{
+  margin:0;
+  font-family:var(--font-body);
+  font-size:1rem;
+  line-height:24px;
+  letter-spacing:-0.01em;
+  color:var(--color-body);
+}
+
+/* Последняя позиция намеренно "истаивает" — сигнал, что список
+   неполный. Референс из Figma (node 98-1898): текст остаётся
+   чётким, без блюра — просто гасится по непрозрачности и уходит
+   в прозрачность к низу строки через mask-image. */
+.experience-list li:last-child{
+  opacity:0.42;
+  mask-image:linear-gradient(to bottom, black 0%, black 25%, transparent 80%);
+  -webkit-mask-image:linear-gradient(to bottom, black 0%, black 25%, transparent 80%);
+  pointer-events:none;
+  user-select:none;
+}
+
+.experience-cta{
+  display:flex;
+  justify-content:center;
+  padding-top:56px;
+}
+.experience-cta .btn{ width:336px; } /* тот же размер, что у кнопок в Финале */
+
+@media (max-width:900px){
+  .experience-item{
+    grid-template-columns:1fr;
+    gap:8px;
+    padding-block:40px; /* было 24px — отступ от дивайдера до дивайдера */
+  }
+  .experience-item__period{ padding-right:0; }
+  .experience-item__role{ padding-right:0; }
+  .experience-item__company{ font-size:1.5rem; } /* 24px — только на мобиле */
+
+  .experience-cta{ justify-content:stretch; }
+  .experience-cta .btn{ width:100%; }
+}

@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "period": "2024 — 2025",
+      "company": "Samokat.tech",
+      "role": "Lead Product Designer",
+      "description": "Led a team of 5 designers across operational and HR products. Set up collaboration processes with adjacent teams and helped embed design practices. Combined leadership with hands-on product work — ran part of the roadmap personally."
+    },
+    {
+      "period": "2023 — 2024",
+      "company": "Samokat.tech",
+      "role": "Senior Product Designer",
+      "description": "Owned a product with three interfaces for 8000+ warehouse staff and operations managers. Introduced UX testing before release to cut the cost of rework. Migrated interfaces to the core design system, speeding up development."
+    },
+    {
+      "period": "2022 — 2023",
+      "company": "Beeline",
+      "role": "Senior Product Designer",
+      "description": "Ran a full-cycle redesign of a legacy CRM for a 1000+ operator call center — a smooth transition that saved the business on onboarding costs. Rebuilt key scenarios and migrated the interface to the design system. Grew a junior into a middle."
+    },
+    {
+      "period": "2019 — 2022",
+      "company": "Fortis · Monopoly",
+      "role": "Head of Interface Design",
+      "description": "Worked across a group of logistics b2b products: improved scenarios for carriers and cargo owners. Managed a team of 7 designers, owned the design system, and ran the full hiring cycle."
+    }
+  ]
+}

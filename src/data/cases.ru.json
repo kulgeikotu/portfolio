@@ -1,0 +1,69 @@
+{
+  "cases": [
+    {
+      "id": "samokat-geo",
+      "href": "/cases/samokat-geo.html",
+      "accent": "#f0dfe3",
+      "company": "Samokat.tech",
+      "segment": "b2e",
+      "platform": "web",
+      "title": "География в конструкторе акций",
+      "metric": "Освободила менеджерам ~2 часа в неделю",
+      "description": "Предотвратила разработку неоптимального решения. Менеджеры перестали вручную добавлять каждый новый даркстор в десятки акций города.",
+      "readTimeLabel": "чтение",
+      "readTimeValue": "~3 минуты",
+      "cover": "/images/ru/cases/samokat-geo.webp",
+      "footerCover": "/images/shared/cases/previews/samokat-geo.webp",
+      "coverAlt": "Экран конструктора акций с настройкой географии"
+    },
+    {
+      "id": "beeline-crm",
+      "href": "/cases/beeline-crm.html",
+      "accent": "#e3dbe0",
+      "company": "билайн",
+      "segment": "b2e",
+      "platform": "web",
+      "nda": true,
+      "title": "CRM для операторов колл-центра",
+      "metric": "0 часов переобучения · 1000+ пользователей",
+      "description": "Полный цикл редизайна продукта с огромным легаси. Переход прошёл гладко без обучения пользователей — ранее на него могли уходить недели",
+      "readTimeLabel": "чтение",
+      "readTimeValue": "~7 минут",
+      "cover": "/images/ru/cases/beeline-crm.webp",
+      "footerCover": "/images/shared/cases/previews/beeline-crm.webp",
+      "coverAlt": "Экран CRM для операторов колл-центра"
+    },
+    {
+      "id": "fortis-drivers",
+      "href": "/cases/fortis-drivers.html",
+      "accent": "#e9f0e4",
+      "company": "Fortis | Monopoly",
+      "segment": "b2b",
+      "platform": "app",
+      "title": "Приложение дальнобойщиков",
+      "metric": "Запустила направление с нуля",
+      "description": "За неделю спроектировала первое приложение компании как MVP для проверки гипотезы. Опрос показал, что интерфейс понятен — водители работают без проблем.",
+      "readTimeLabel": "чтение",
+      "readTimeValue": "~3 минуты",
+      "cover": "/images/ru/cases/fortis-drivers.webp",
+      "footerCover": "/images/shared/cases/previews/fortis-drivers.webp",
+      "coverAlt": "Экран мобильного приложения для дальнобойщиков"
+    },
+    {
+      "id": "fortis-ds",
+      "href": "/cases/fortis-ds.html",
+      "accent": "#eef0f7",
+      "company": "Fortis | Monopoly",
+      "segment": "b2b",
+      "platform": "web · app",
+      "title": "Дизайн-система логистической компании",
+      "metric": "30+ компонентов · 5 продуктов · ребрендинг за спринт",
+      "description": "Сделала систему живой и работающей. Команда перестала спорить об одних и тех же решениях повторно. Время на типовые экраны заметно снизилось.",
+      "readTimeLabel": "чтение",
+      "readTimeValue": "~5 минут",
+      "cover": "/images/ru/cases/fortis-ds.webp",
+      "footerCover": "/images/shared/cases/previews/fortis-ds.webp",
+      "coverAlt": "Компоненты дизайн-системы логистической компании"
+    }
+  ]
+}

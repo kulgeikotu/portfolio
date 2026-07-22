@@ -1,0 +1,85 @@
+/* =====================================================
+   HEADER
+   ===================================================== */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:saturate(180%) blur(8px);
+}
+
+.header-inner{
+  height:var(--header-h);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:0; /* без gap — вторая колонка (nav) стартует ровно на 50%,
+    как описание в Опыте и интро в Визуалах (единая вертикаль) */
+}
+/* min-width:0 обязателен для грид-колонок с nowrap-контентом внутри —
+   иначе лого (не переносится) распирает колонку шире её доли и вся
+   страница на узких экранах становится чуть шире вьюпорта */
+.header-inner > *{ min-width:0; }
+
+.logo{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:20px;
+  line-height:24px;
+  letter-spacing:0.01em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.logo svg{ width:20px; height:20px; flex-shrink:0; }
+
+/* Правая половина хедера: якорное меню начинается ровно с середины
+   контейнера, справа от него — язык/резюме/бургер.
+   Все текстовые элементы (лого/nav/язык/резюме) на одной базовой
+   линии — за счёт общего line-height:24px их боксы равны по высоте,
+   а центрирование внутри 72px хедера ставит эту линию посередине. */
+.header-secondary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.site-nav{
+  display:flex;
+  align-items:center;
+  gap:48px;
+}
+.site-nav a{
+  font-size:1.125rem;
+  font-weight:400;
+  line-height:24px;
+  color:var(--color-eyebrow);
+  transition:color .2s ease;
+}
+.site-nav a.is-active{ color:var(--color-ink); }
+.site-nav a:hover{ color:var(--color-accent); }
+
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+
+.menu-toggle{
+  display:none;
+  width:40px; height:40px;
+  align-items:center; justify-content:center;
+  background:none; border:0; cursor:pointer; padding:0;
+}
+.menu-toggle svg{ width:22px; height:22px; }
+
+@media (max-width: 1330px){
+  .site-nav{ display:none; }
+  .header-right .btn-resume{ display:none; }
+  .menu-toggle{ display:inline-flex; }
+  /* nav скрыт — прижимаем оставшийся блок (язык/бургер) к правому краю */
+  .header-secondary{ justify-content:flex-end; }
+}

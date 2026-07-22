@@ -1,0 +1,186 @@
+/* =====================================================
+   CASE — строка-кейс в списке на главной (node 16:7219 desktop,
+   16:6706 mobile). На десктопе теги «b2e»/«web» стоят по краям
+   контейнера, контент — центрированная колонка максимум 840px.
+   На мобиле теги схлопываются в одну строку метаданных.
+   Дивайдеры — только МЕЖДУ карточками (.case + .case), без
+   верхнего/нижнего у первой/последней.
+   Кликабельна/hover-реактивна только обложка (.case__cover — сама
+   ссылка), остальной текст — статичный, не ссылка. */
+.case{
+  position:relative;
+  scroll-margin-top:var(--header-h); /* переход по якорю со страницы кейса
+    («назад») не должен прятать карточку под sticky-хедер */
+}
+.case + .case{
+  border-top:1px solid var(--color-hairline);
+}
+
+.case__tag{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  margin:0;
+  font-family:var(--font-body);
+  font-size:var(--fs-body);
+  color:var(--color-body);
+  letter-spacing:-0.01em;
+}
+.case__tag--start{ left:0; }
+.case__tag--end{ right:0; }
+
+.case__content{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+  max-width:840px;
+  margin-inline:auto;
+  padding-block:64px;
+  text-align:center;
+}
+
+.case__meta{
+  display:none; /* показываем только на мобиле, см. медиазапрос ниже */
+}
+
+.case__company{
+  margin:0;
+  font-family:var(--font-body);
+  font-size:var(--fs-body);
+  color:var(--color-body);
+  letter-spacing:-0.01em;
+}
+
+.case__title{
+  margin:0;
+  font-family:var(--font-display);
+  font-size:var(--fs-h1);
+  font-weight:500;
+  line-height:1;
+  letter-spacing:var(--ls-h1);
+  color:var(--color-ink);
+}
+
+.case__metric{
+  margin:0;
+  font-family:var(--font-body);
+  font-size:1.25rem;
+  color:var(--color-ink);
+}
+
+.case__cover{
+  display:block;
+  position:relative;
+  width:100%;
+  max-width:688px;
+  aspect-ratio:688 / 394;
+  border-radius:2px;
+  overflow:hidden;
+  background:var(--case-accent, var(--color-photo-bg));
+  margin-top:12px;
+}
+.case__cover img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0) scale(1);
+  transition:transform .5s ease;
+}
+.case__cover:hover img{
+  transform:translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0) scale(1.04);
+}
+/* пока курсор активно двигается внутри обложки — догоняем его быстрее;
+   при уходе курсора класс снимается, и картинка плавно возвращается в
+   центр на обычной (медленной) transition выше */
+.case__cover.is-tracking img{
+  transition:transform .2s ease-out;
+}
+
+.case__nda{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  background:rgba(33,32,31,0.12);
+  color:var(--color-body);
+  font-family:var(--font-body);
+  font-size:1rem;
+  padding:8px 12px;
+  border-radius:4px;
+  z-index:1;
+}
+
+.case__footer{
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  width:100%;
+  max-width:688px;
+  text-align:left;
+  margin-top:12px;
+}
+
+.case__description{
+  margin:0;
+  flex:1;
+  max-width:540px; /* только десктоп — на мобиле сбрасывается ниже */
+  font-family:var(--font-body);
+  font-size:1rem;
+  line-height:24px;
+  letter-spacing:-0.01em;
+  color:var(--color-body);
+}
+
+.case__read-time{
+  display:flex;
+  flex-direction:column; /* на десктопе «чтение» и «~N минуты» — в две строки */
+  margin:0;
+  flex-shrink:0;
+  font-family:var(--font-body);
+  font-size:1rem;
+  line-height:24px; /* тот же line-height, что у описания — строки совпадают по базовой линии */
+  color:var(--color-body);
+  text-align:right;
+  white-space:nowrap;
+}
+
+@media (max-width:900px){
+  .case__tag{ display:none; }
+  .case__company{ display:none; }
+
+  .case__meta{
+    display:block;
+    width:100%;
+    margin:0;
+    font-family:var(--font-body);
+    font-size:0.875rem; /* 14px — только на мобиле */
+    color:var(--color-body);
+    letter-spacing:-0.01em;
+  }
+
+  .case__metric{
+    font-size:1.125rem; /* 18px — только на мобиле (десктоп — 1.25rem/20px) */
+  }
+
+  /* meta/title/metric остаются центрированными (наследуют от .case__content);
+     описание — по левому краю, время чтения — по правому, в одну строку */
+  .case__content{
+    padding-block:64px; /* было 32px — отступ от дивайдера до дивайдера, как на десктопе */
+    gap:12px;
+  }
+
+  .case__footer{
+    flex-direction:column;
+    align-items:flex-start;
+    text-align:left;
+    gap:8px;
+  }
+  .case__description{ max-width:none; }
+  .case__read-time{
+    flex-direction:row;
+    gap:4px;
+    align-self:flex-end;
+    text-align:right;
+  }
+}

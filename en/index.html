@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{> head-meta }}
+  {{> head-analytics }}
+</head>
+<body>
+
+  {{> header }}
+  {{> mobile-menu }}
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-top">
+            <p class="eyebrow reveal reveal--fade">{{ t.[hero.eyebrow] }}</p>
+            <h1 class="hero-title reveal" aria-label="{{ t.[hero.title] }}">
+              <span aria-hidden="true">
+                {{#each t.[hero.titleLines]}}
+                <span class="hero-title__line"><span class="hero-title__line-inner">{{ this }}</span></span>
+                {{/each}}
+              </span>
+            </h1>
+          </div>
+          <div class="hero-bottom">
+            <hr class="hero-divider">
+            <p class="hero-text reveal reveal--fade">{{ t.[hero.text] }}</p>
+          </div>
+        </div>
+
+        <div class="hero-media reveal reveal--fade">
+          {{! Photo is shared across locales → /images/shared/hero-*.webp }}
+          <picture>
+            <source type="image/webp"
+              srcset="/images/shared/hero-480.webp 480w, /images/shared/hero-960.webp 960w,
+                      /images/shared/hero-1440.webp 1440w, /images/shared/hero-2064.webp 2064w"
+              sizes="(max-width:900px) 100vw, 50vw">
+            <img src="/images/shared/hero-960.jpg" alt="{{ t.[hero.photoAlt] }}"
+                 width="2064" height="2292" fetchpriority="high" loading="eager" decoding="async">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases" class="section-cases">
+      <div class="container">
+        <ul class="case-list">
+          {{#each cases}}
+          <li class="case reveal reveal--fade" id="{{ this.id }}">
+            <span class="case__tag case__tag--start" aria-hidden="true">{{ this.segment }}</span>
+            <span class="case__tag case__tag--end" aria-hidden="true">{{ this.platform }}</span>
+            <div class="case__content">
+              <p class="case__meta">{{ this.company }} · {{ this.segment }} · {{ this.platform }}</p>
+              <p class="case__company">{{ this.company }}</p>
+              <h3 class="case__title">{{ this.title }}</h3>
+              <p class="case__metric">{{ this.metric }}</p>
+              <a class="case__cover" href="{{ this.href }}" style="--case-accent:{{ this.accent }}">
+                {{#if this.nda}}<span class="case__nda">NDA</span>{{/if}}
+                <img src="{{ this.cover }}" alt="{{ this.coverAlt }}" loading="lazy" decoding="async">
+              </a>
+              <div class="case__footer">
+                <p class="case__description">{{ this.description }}</p>
+                <p class="case__read-time"><span>{{ this.readTimeLabel }}</span><span>{{ this.readTimeValue }}</span></p>
+              </div>
+            </div>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </section>
+
+    <section id="experience" class="section-experience">
+      <div class="container">
+        <div class="experience-head">
+          <h2 class="experience-title reveal">{{ t.[nav.experience] }}</h2>
+          <p class="experience-intro reveal reveal--fade">{{ t.[experience.intro] }}</p>
+        </div>
+        <ul class="experience-list">
+          {{#each experience}}
+          <li class="experience-item reveal reveal--fade">
+            <p class="experience-item__period">{{ this.period }}</p>
+            <div class="experience-item__role">
+              <p class="experience-item__company">{{ this.company }}</p>
+              <p class="experience-item__title">{{ this.role }}</p>
+            </div>
+            <p class="experience-item__description">{{ this.description }}</p>
+          </li>
+          {{/each}}
+        </ul>
+        <div class="experience-cta">
+          <a class="btn btn--outline" href="https://drive.google.com/file/d/1Hh1bT_1pvAWDIs8ADEqvBIuettlif_6B/view?usp=sharing" target="_blank" rel="noopener" data-track="resume_open_experience">{{ t.[contacts.resume] }}</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="visuals" class="section-visuals">
+      <div class="container">
+        <div class="visuals-head">
+          <h2 class="visuals-title reveal">{{ t.[nav.visuals] }}</h2>
+          <p class="visuals-intro reveal reveal--fade">{{ t.[visuals.intro] }}</p>
+        </div>
+        <ul class="visuals-grid">
+          {{#each visuals}}
+          <li class="visuals-grid__item reveal reveal--fade">
+            <a class="visuals-grid__link" href="{{ this.href }}">
+              <img src="{{ this.cover }}" alt="{{ this.alt }}" loading="lazy" decoding="async">
+            </a>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  {{> footer }}
+
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

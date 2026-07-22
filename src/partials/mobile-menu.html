@@ -1,0 +1,25 @@
+{{! Плавающая панель мобильного меню — не на весь экран,
+    фон под ней блюрится (см. .mobile-menu / .mobile-menu-panel) }}
+<div class="mobile-menu" id="mobileMenu" data-open="false" role="dialog" aria-modal="true" aria-label="{{ t.[nav.cases] }}">
+  <div class="mobile-menu-panel">
+    <button class="mobile-menu-close" id="menuClose" aria-label="{{ t.[nav.closeMenu] }}">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 18.7686L13.2311 12L20 5.23136L18.7693 4.0007L12.0004 10.7693L5.23071 4L4 5.23066L10.7696 12L4 18.7693L5.23071 20L12.0004 13.2307L18.7693 19.9993L20 18.7686Z" fill="currentColor"/></svg>
+    </button>
+
+    <nav class="mobile-nav" aria-label="{{ t.[nav.cases] }}">
+      <a href="#cases">{{ t.[nav.cases] }}</a>
+      <a href="#experience">{{ t.[nav.experience] }}</a>
+      <a href="#visuals">{{ t.[nav.visuals] }}</a>
+      <a href="#contacts">{{ t.[nav.contacts] }}</a>
+    </nav>
+
+    {{#unless hideLangSwitch}}
+    <a class="lang-switch mobile-menu-lang" href="#" onclick="document.getElementById('langSwitch').click();return false;">{{ t.[lang.switchTo] }}</a>
+    {{/unless}}
+
+    <a class="btn-resume mobile-menu-resume" href="https://drive.google.com/file/d/1Hh1bT_1pvAWDIs8ADEqvBIuettlif_6B/view?usp=sharing" target="_blank" rel="noopener" data-track="resume_open">
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M12.5913 3C12.9718 3 13.2803 3.30844 13.2803 3.68893C13.2803 3.68893 13.2803 7.46788 13.2803 9.88926C12.7358 9.88926 12.5913 9.88926 11.9024 9.88926C11.9024 8.11737 11.9024 5.35204 11.9024 5.35204L2.97419 14.2803L2 13.3061L10.9282 4.37785H6.39101C6.39101 3.68893 6.39101 3.86116 6.39101 3H12.5913Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"/></svg>
+      {{ t.[nav.resume] }}
+    </a>
+  </div>
+</div>

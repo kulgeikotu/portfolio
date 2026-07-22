@@ -1,0 +1,28 @@
+{{! Общие мета-теги. Подключается в <head> каждой страницы.
+    lang и t приходят из vite.config context по расположению файла. }}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ t.[meta.title] }}</title>
+<meta name="description" content="{{ t.[meta.description] }}">
+
+{{! favicon и иконки }}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+{{!-- Open Graph — превью ссылки в ТГ/соцсетях.
+    og-image берётся из папки языка: /images/{{lang}}/og-image.jpg --}}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ t.[meta.title] }}">
+<meta property="og:description" content="{{ t.[meta.description] }}">
+<meta property="og:image" content="/images/{{ lang }}/og-image.jpg">
+<meta property="og:locale" content="{{#if (eq lang 'en')}}en_US{{else}}ru_RU{{/if}}">
+<meta name="twitter:card" content="summary_large_image">
+
+{{! hreflang — связка RU/EN версий для Google.
+    ВАЖНО: перед деплоем подставь реальный домен вместо example.com,
+    либо сгенерируй эти теги на этапе сборки. }}
+{{!-- <link rel="alternate" hreflang="ru" href="https://example.com{{ ruPath }}"> --}}
+{{!-- <link rel="alternate" hreflang="en" href="https://example.com/en{{ enPath }}"> --}}
+{{!-- <link rel="alternate" hreflang="x-default" href="https://example.com{{ ruPath }}"> --}}

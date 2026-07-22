@@ -1,0 +1,177 @@
+/* =====================================================
+   HERO — обычная колонка внутри .container (тот же отступ
+   от краёв экрана, что и у остальных секций). Фото — правая
+   половина, верх выровнен по верху текста, снизу — 140px
+   белого пространства перед следующей секцией (64px на мобиле).
+   ===================================================== */
+.hero{
+  padding-top: clamp(20px, 3vw, 40px);
+  padding-bottom: 140px;
+}
+
+.hero-grid{
+  display:flex;
+  align-items:stretch; /* колонки одной высоты (по фото) — верх всё равно совпадает,
+                           а justify-content:space-between в .hero-content разносит
+                           заголовок и нижний текст на всю эту высоту, как в макете */
+  gap:16px;
+}
+
+.hero-content{
+  width:calc(50% - 16px); /* минус gap хедер-грида — иначе 50%+50%+gap
+    переполняет строку, и фото уезжает от истинной середины (см. .hero-grid) */
+  flex-shrink:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:32px;
+  padding-bottom:48px; /* поднимает дивайдер+текст от самого низа блока */
+}
+
+.hero-top{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.eyebrow{
+  margin:0;
+  font-family:var(--font-body);
+  font-size:var(--fs-eyebrow);
+  color:var(--color-eyebrow);
+  font-weight:400;
+  letter-spacing:-0.01em;
+  line-height:18px;
+}
+
+.hero-title{
+  margin:0;
+  font-family:var(--font-display);
+  font-size:var(--fs-h1);
+  font-weight:500;
+  line-height:1;
+  letter-spacing:var(--ls-h1);
+  color:var(--color-ink);
+}
+
+/* Заголовок анимируется построчно ("шторка") вместо общего .reveal-фейда:
+   сам h1 нейтрализуем, а каждая .hero-title__line-inner выезжает
+   из-под маски (overflow:hidden на обёртке) по очереди */
+.hero-title.reveal{
+  opacity:1;
+  transform:none;
+  transition:none;
+}
+.hero-title__line{
+  display:block;
+  overflow:hidden;
+  /* запас снизу под хвостики букв (у, р, У, ф...) — иначе overflow:hidden
+     обрезает их вместе со строкой; margin компенсирует, чтобы межстрочный
+     интервал не увеличился */
+  padding-bottom:0.18em;
+  margin-bottom:-0.18em;
+}
+.hero-title__line-inner{
+  display:block;
+  transform:translateY(100%);
+  opacity:0;
+  transition: transform 2.6s cubic-bezier(.16,1,.3,1), opacity 1.8s ease;
+}
+.hero-title.is-visible .hero-title__line-inner{
+  transform:translateY(0);
+  opacity:1;
+}
+.hero-title__line:nth-child(1) .hero-title__line-inner{ transition-delay:.2s; }
+.hero-title__line:nth-child(2) .hero-title__line-inner{ transition-delay:.9s; }
+.hero-title__line:nth-child(3) .hero-title__line-inner{ transition-delay:1.6s; }
+
+@media (prefers-reduced-motion: reduce){
+  .hero-title__line-inner{ transform:none; opacity:1; transition:none; }
+}
+
+.hero-bottom{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.hero-divider{
+  border:none;
+  border-top:1px solid var(--color-hairline);
+  margin:0;
+}
+
+.hero-text{
+  margin:0;
+  font-family:var(--font-body);
+  font-size:var(--fs-body);
+  color:var(--color-body);
+  line-height:24px;
+  letter-spacing:-0.01em;
+  max-width:571px;
+}
+
+.hero-media{
+  position:relative;
+  width:50%;
+  flex-shrink:0;
+  background:var(--color-photo-bg);
+  border-radius:2px;
+  overflow:hidden;
+  /* высота считается от вьюпорта: хедер+герой должны влезать в первый
+     экран, а 140px белого отступа после секции — уже можно за скроллом.
+     На очень высоких экранах не растягиваем до бесконечности — секция
+     не должна занимать буквально весь экран, «Кейсы» уже может
+     показываться краем */
+  height: min(calc(100dvh - var(--header-h) - clamp(20px, 3vw, 40px)), 800px);
+}
+.hero-media picture{
+  display:block;
+  width:100%;
+  height:100%;
+}
+.hero-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 20%;
+}
+.hero-media .placeholder-label{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#b9b0a1;
+  font-size:0.875rem;
+  letter-spacing:0.04em;
+  text-align:center;
+  padding:24px;
+}
+
+@media (max-width: 900px){
+  .hero{
+    padding-top:24px;
+    padding-bottom:64px;
+  }
+  .hero-grid{
+    flex-direction:column;
+    gap:28px;
+  }
+  .hero-content{
+    /* убираем контейнер из раскладки: hero-top и hero-bottom становятся
+       настоящими соседями hero-media внутри hero-grid — иначе order
+       на hero-bottom не работает (см. комментарий в шапке файла) */
+    display:contents;
+  }
+  .hero-top{ order:1; }
+  .hero-media{
+    order:2;
+    width:100%;
+    height:auto;
+    aspect-ratio: 361 / 402;
+    margin-top:120px; /* доп. отступ от заголовка до фото, сверх gap у hero-grid */
+  }
+  .hero-bottom{ order:3; }
+  .hero-divider{ display:none; }
+}

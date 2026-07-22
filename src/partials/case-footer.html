@@ -1,0 +1,32 @@
+{{!-- Футер для страниц кейсов — «Другие кейсы» вместо общих контактов.
+    Показывает все кейсы из cases, кроме текущего: подключать с
+    currentCaseId="id-текущего-кейса" как hash-параметром партиала. --}}
+<footer class="other-cases">
+  <div class="container">
+    <h2 class="other-cases__title reveal">{{ t.[otherCases.title] }}</h2>
+    <ul class="other-cases__grid">
+      {{#each cases}}
+      {{#unless (eq this.id ../currentCaseId)}}
+      <li class="other-case reveal reveal--fade">
+        <a class="other-case__link" href="{{ this.href }}">
+          <span class="other-case__meta">{{ this.company }} · {{ this.segment }}</span>
+          {{#if (eq this.id "fortis-drivers")}}
+            {{#if (eq ../lang "en")}}
+            <span class="other-case__title">{{ this.title }}</span>
+            {{else}}
+            <span class="other-case__title">Приложение<br>дальнобойщиков</span>
+            {{/if}}
+          {{else}}
+          <span class="other-case__title">{{ this.title }}</span>
+          {{/if}}
+          <span class="other-case__cover" style="--case-accent:{{ this.accent }}">
+            {{#if this.nda}}<span class="other-case__nda">NDA</span>{{/if}}
+            <img src="{{ this.footerCover }}" alt="{{ this.title }}" loading="lazy" decoding="async" width="907" height="616">
+          </span>
+        </a>
+      </li>
+      {{/unless}}
+      {{/each}}
+    </ul>
+  </div>
+</footer>

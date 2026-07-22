@@ -1,0 +1,47 @@
+/* =====================================================
+   FONTS — локальные .woff2 (быстрее, без внешних запросов)
+   Положи файлы в public/fonts/. Пока их нет, сработает
+   системный фолбэк из --font-body / --font-display.
+
+   Где взять:
+   - Golos Text: fonts.google.com/specimen/Golos+Text (кириллица + латиница)
+   - Geist:      github.com/vercel/geist-font (латиница)
+   Скачай .woff2 нужных начертаний и положи с именами ниже.
+   ===================================================== */
+
+@font-face{
+  font-family: "Golos Text";
+  src: url("/fonts/GolosText-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Golos Text";
+  src: url("/fonts/GolosText-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Golos Text";
+  src: url("/fonts/GolosText-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Geist";
+  src: url("/fonts/Geist-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "Geist";
+  src: url("/fonts/Geist-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

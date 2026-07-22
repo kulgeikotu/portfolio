@@ -1,0 +1,69 @@
+{
+  "cases": [
+    {
+      "id": "samokat-geo",
+      "href": "/en/cases/samokat-geo.html",
+      "accent": "#f0dfe3",
+      "company": "Samokat.tech",
+      "segment": "b2e",
+      "platform": "web",
+      "title": "Geography in the promo builder",
+      "metric": "Freed up ~2 hours a week for managers",
+      "description": "Prevented the team from building an unnecessarily complex solution. Managers stopped manually adding every new dark store to dozens of city promotions.",
+      "readTimeLabel": "reading",
+      "readTimeValue": "~3 min",
+      "cover": "/images/en/cases/samokat-geo.webp",
+      "footerCover": "/images/shared/cases/previews/samokat-geo.webp",
+      "coverAlt": "Promo builder screen with geography settings"
+    },
+    {
+      "id": "beeline-crm",
+      "href": "/en/cases/beeline-crm.html",
+      "accent": "#e3dbe0",
+      "company": "Beeline",
+      "segment": "b2e",
+      "platform": "web",
+      "nda": true,
+      "title": "CRM for call center operators",
+      "metric": "0 hours of retraining · 1000+ users",
+      "description": "Full-cycle redesign of a product with heavy legacy debt. The transition went smoothly with no user training — it used to take weeks.",
+      "readTimeLabel": "reading",
+      "readTimeValue": "~7 min",
+      "cover": "/images/en/cases/beeline-crm.webp",
+      "footerCover": "/images/shared/cases/previews/beeline-crm.webp",
+      "coverAlt": "CRM screen for call center operators"
+    },
+    {
+      "id": "fortis-drivers",
+      "href": "/en/cases/fortis-drivers.html",
+      "accent": "#e9f0e4",
+      "company": "Fortis | Monopoly",
+      "segment": "b2b",
+      "platform": "app",
+      "title": "App for long-haul truckers",
+      "metric": "Launched a new product line from scratch",
+      "description": "Designed the company's first app as an MVP in a week to test the hypothesis. A survey showed the interface was clear — drivers had no issues using it.",
+      "readTimeLabel": "reading",
+      "readTimeValue": "~3 min",
+      "cover": "/images/en/cases/fortis-drivers.webp",
+      "footerCover": "/images/shared/cases/previews/fortis-drivers.webp",
+      "coverAlt": "Mobile app screen for long-haul truckers"
+    },
+    {
+      "id": "fortis-ds",
+      "href": "/en/cases/fortis-ds.html",
+      "accent": "#eef0f7",
+      "company": "Fortis | Monopoly",
+      "segment": "b2b",
+      "platform": "web · app",
+      "title": "Design system for a logistics company",
+      "metric": "30+ components · 5 products · rebrand in a sprint",
+      "description": "Made the system alive and functional. The team stopped re-arguing the same decisions. Time spent on routine screens dropped noticeably.",
+      "readTimeLabel": "reading",
+      "readTimeValue": "~5 min",
+      "cover": "/images/en/cases/fortis-ds.webp",
+      "footerCover": "/images/shared/cases/previews/fortis-ds.webp",
+      "coverAlt": "Design system components for a logistics company"
+    }
+  ]
+}

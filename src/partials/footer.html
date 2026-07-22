@@ -1,0 +1,38 @@
+{{! Футер / контакты }}
+<footer id="contacts" class="section-contacts">
+  <div class="container">
+    <div class="contacts-cta">
+      <h2 class="contacts-title reveal">{{ t.[contacts.title] }}</h2>
+      <div class="contacts-buttons">
+        <a class="btn btn--solid" href="https://telegram.me/kulgeiko" target="_blank" rel="noopener" data-track="telegram_open">{{ t.[contacts.telegram] }}</a>
+        <a class="btn btn--outline" href="https://drive.google.com/file/d/1Hh1bT_1pvAWDIs8ADEqvBIuettlif_6B/view?usp=sharing" target="_blank" rel="noopener" data-track="resume_open">{{ t.[contacts.resume] }}</a>
+      </div>
+    </div>
+    <p class="footer-links">
+      <a href="https://dsgners.ru/ecom/22463-whiteboard-chast-1-zachem-provodit-i-kak-sformirovat-zadaniya" target="_blank" rel="noopener" data-track="article_open">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M12.5913 3C12.9718 3 13.2803 3.30844 13.2803 3.68893C13.2803 3.68893 13.2803 7.46788 13.2803 9.88926C12.7358 9.88926 12.5913 9.88926 11.9024 9.88926C11.9024 8.11737 11.9024 5.35204 11.9024 5.35204L2.97419 14.2803L2 13.3061L10.9282 4.37785H6.39101C6.39101 3.68893 6.39101 3.86116 6.39101 3H12.5913Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"/></svg>
+        {{ t.[contacts.article] }}
+      </a>
+      <a href="https://telegram.me/+DHAe7wPFJVEyZjFi" target="_blank" rel="noopener" data-track="blog_open">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M12.5913 3C12.9718 3 13.2803 3.30844 13.2803 3.68893C13.2803 3.68893 13.2803 7.46788 13.2803 9.88926C12.7358 9.88926 12.5913 9.88926 11.9024 9.88926C11.9024 8.11737 11.9024 5.35204 11.9024 5.35204L2.97419 14.2803L2 13.3061L10.9282 4.37785H6.39101C6.39101 3.68893 6.39101 3.86116 6.39101 3H12.5913Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"/></svg>
+        {{ t.[contacts.blog] }}
+      </a>
+    </p>
+    <p class="footer-email">
+      <a href="mailto:{{ t.[footer.email] }}" class="footer-email__link" data-track="contact_email" data-copy-email="{{ t.[footer.email] }}">
+        {{ t.[footer.email] }}
+        <svg class="footer-email__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M15 15H5V13.5H13.5V5H15V15Z" fill="currentColor"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 12H2V2H12V12ZM3.5 10.5H10.5V3.5H3.5V10.5Z" fill="currentColor"/>
+        </svg>
+      </a>
+    </p>
+  </div>
+
+  <div class="toast" id="emailToast" role="status" aria-live="polite">
+    <p class="toast__text">{{ t.[toast.emailCopied] }}</p>
+    <button class="toast__close" id="emailToastClose" aria-label="{{ t.[toast.close] }}">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 18.7686L13.2311 12L20 5.23136L18.7693 4.0007L12.0004 10.7693L5.23071 4L4 5.23066L10.7696 12L4 18.7693L5.23071 20L12.0004 13.2307L18.7693 19.9993L20 18.7686Z" fill="currentColor"/></svg>
+    </button>
+  </div>
+</footer>

@@ -1,0 +1,68 @@
+/* =====================================================
+   TOAST — уведомление "почта скопирована" внизу экрана.
+   Открыт/закрыт через [data-open], см. src/js/email-copy.js
+   ===================================================== */
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:24px;
+  z-index:300;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  background:var(--color-ink);
+  color:#ffffff;
+  padding:14px 16px 14px 20px;
+  border-radius:0;
+  box-shadow:0 16px 40px rgba(0,0,0,0.24);
+  opacity:0;
+  visibility:hidden;
+  transform:translate(-50%, 12px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s;
+}
+.toast[data-open="true"]{
+  opacity:1;
+  visibility:visible;
+  transform:translate(-50%, 0);
+}
+
+.toast__text{
+  margin:0;
+  font-family:var(--font-body);
+  font-size:0.9375rem;
+  white-space:nowrap;
+}
+
+.toast__close{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:24px;
+  height:24px;
+  flex-shrink:0;
+  background:none;
+  border:0;
+  padding:0;
+  cursor:pointer;
+  color:#ffffff;
+  opacity:0.7;
+  transition:opacity .2s ease;
+}
+.toast__close:hover{ opacity:1; }
+.toast__close svg{ width:16px; height:16px; }
+
+@media (prefers-reduced-motion: reduce){
+  .toast{ transition:opacity .01ms, visibility .01ms; }
+}
+
+@media (max-width:480px){
+  .toast{
+    left:16px;
+    right:16px;
+    bottom:16px;
+    justify-content:space-between; /* крестик — к правому краю */
+    transform:translateY(12px);
+  }
+  .toast[data-open="true"]{ transform:translateY(0); }
+  .toast__text{ white-space:normal; }
+}

@@ -1,0 +1,56 @@
+/* =====================================================
+   CASE HEADER — упрощённый хедер страниц кейсов: стрелка
+   «назад» слева (без кнопки-обводки), контакт в ТГ справа.
+   Высота и поведение (sticky/блюр) — как у основного .site-header.
+   ===================================================== */
+.case-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,255,255,0.01);
+  backdrop-filter:blur(42px);
+  -webkit-backdrop-filter:blur(42px);
+  border-radius:0;
+  transition:background-color .2s ease;
+}
+/* После hero (см. case-header-scroll.js) хедер бежит поверх и тёмного
+   блока карточек-итогов — там тёмные иконки/текст (color:var(--color-ink))
+   на rgba(255,255,255,0.01) становятся не видны. Белая подложка 60% даёт
+   достаточно светлую подложку под ними на любом фоне ниже hero. */
+.case-header--scrolled{
+  background:rgba(255,255,255,0.6);
+}
+
+.case-header__inner{
+  height:var(--header-h);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.case-header__back{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--color-ink);
+  transition:color .2s ease;
+}
+/* 20px даёт ту же толщину линии (~1.25px), что и стрелка в «Написать
+   в ТГ» (14px) — обе фигуры залиты (без CSS stroke-width), поэтому
+   толщина зависит от размера рендера; см. соотношение их путей. */
+.case-header__back svg{ width:20px; height:20px; }
+.case-header__back:hover{ color:var(--color-accent); }
+
+.case-header__contact{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  font-family:var(--font-body);
+  font-size:1.125rem;
+  line-height:24px;
+  color:var(--color-ink);
+  white-space:nowrap;
+  transition:color .2s ease;
+}
+.case-header__contact svg{ width:14px; height:14px; }
+.case-header__contact:hover{ color:var(--color-accent); }

@@ -1,0 +1,117 @@
+/* =====================================================
+   Секция «contacts» (node 16:7148 + 16:7155/7166 desktop) —
+   крупный CTA-заголовок с двумя кнопками, много воздуха сверху, ниже —
+   служебные ссылки (статья/блог) и почта, разделённые полосой.
+   Низ секции — компактный: тост про копирование почты (fixed)
+   при необходимости накладывается поверх текста, а не отталкивается.
+   ===================================================== */
+.section-contacts{
+  padding-block:220px 32px; /* было 228px, -8px по просьбе */
+}
+
+.contacts-cta{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  width:100%;
+  gap:48px;
+  max-width:924px;
+  margin-inline:auto;
+  text-align:center;
+}
+
+.contacts-title{
+  margin:0;
+  font-family:var(--font-display);
+  font-size:var(--fs-h1);
+  font-weight:500;
+  line-height:1;
+  letter-spacing:var(--ls-h1);
+  color:var(--color-ink);
+}
+
+.contacts-buttons{
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  width:100%;
+}
+.contacts-buttons .btn{ width:336px; }
+
+/* большой воздух перед служебной строкой — финал сайта, не должно
+   быть тесно */
+.footer-links{
+  display:flex;
+  gap:32px;
+  justify-content:center;
+  width:100%;
+  margin:224px 0 0;
+  font-family:var(--font-body);
+  font-size:1rem;
+  text-align:center;
+}
+.footer-links a{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  transition:color .2s ease;
+}
+.footer-links a:hover{ color:var(--color-accent); }
+.footer-links a svg{
+  width:16px;
+  height:16px;
+  flex-shrink:0;
+}
+
+/* дивайдер стоит между служебными ссылками и почтой; на десктопе —
+   не на всю ширину страницы, а по ширине CTA-блока сверху */
+.footer-email{
+  width:100%;
+  max-width:924px;
+  margin:24px auto 0;
+  padding-top:32px;
+  border-top:1px solid var(--color-hairline);
+  text-align:center;
+  font-family:var(--font-body);
+  font-size:1rem;
+}
+.footer-email__link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:color .2s ease;
+}
+.footer-email__link:hover{ color:var(--color-accent); }
+.footer-email__icon{
+  width:16px;
+  height:16px;
+  flex-shrink:0;
+}
+
+@media (max-width:900px){
+  .section-contacts{ padding-block:104px 32px; } /* было 56px, +48px */
+
+  /* на мобиле весь блок прибит к левому краю, а не центрирован */
+  .contacts-cta{
+    align-items:flex-start;
+    text-align:left;
+    gap:32px;
+  }
+  .contacts-buttons{
+    flex-direction:column-reverse; /* «Открыть резюме» визуально выше «Написать в ТГ» */
+    align-items:stretch;
+  }
+  .contacts-buttons .btn{ width:100%; }
+
+  .footer-links{
+    justify-content:flex-start;
+    gap:8px;
+    text-align:left;
+    margin-top:96px;
+  }
+  .footer-email{
+    max-width:none;
+    margin-inline:0;
+    text-align:left;
+  }
+}

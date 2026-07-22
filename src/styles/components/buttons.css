@@ -1,0 +1,62 @@
+/* =====================================================
+   BUTTONS / небольшие интерактивные элементы
+   ===================================================== */
+
+/* Крупные CTA-кнопки (герой/контакты/опыт) — сверены с Figma:
+   высота 48px, паддинги 24px, текст 18px */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:48px;
+  padding-inline:24px;
+  font-family:var(--font-body);
+  font-size:1.125rem;
+  line-height:24px;
+  white-space:nowrap;
+}
+.btn--solid{
+  background:var(--color-ink);
+  color:#f4f4f4;
+  transition:background .2s ease;
+}
+.btn--solid:hover{ background:var(--color-accent); }
+
+.btn--outline{
+  border:1px solid #d3d3d3;
+  color:var(--color-ink);
+  transition:border-color .2s ease, color .2s ease;
+}
+.btn--outline:hover{
+  border-color:var(--color-accent);
+  color:var(--color-accent);
+}
+
+.btn-resume{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  font-size:1.125rem;
+  font-weight:400;
+  line-height:24px;
+  white-space:nowrap;
+  color:var(--color-ink);
+  transition:color .2s ease;
+}
+.btn-resume svg{
+  width:14px; height:14px;
+  color:currentColor;
+}
+.btn-resume:hover{ color:var(--color-accent); }
+
+/* Переключатель языка */
+.lang-switch{
+  display:inline-flex;
+  align-items:center;
+  font-size:var(--fs-nav);
+  font-weight:500;
+  line-height:24px;
+  color:var(--color-eyebrow);
+  letter-spacing:0.02em;
+}
+.lang-switch:hover{ color:var(--color-ink); }
