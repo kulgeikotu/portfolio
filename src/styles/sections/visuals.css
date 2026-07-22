@@ -61,20 +61,51 @@
 
 .visuals-grid__link{
   display:block;
+  position:relative;
   width:100%;
   height:100%;
   border-radius:4px;
   overflow:hidden;
   background:var(--color-hairline);
 }
+/* Тег с названием — поверх картинки, по центру сверху (снизу слева
+   был неприятный наезд на контент превью). Тёмная полупрозрачная
+   подложка + блюр держат читаемость независимо от того, что именно на
+   превью (тёмный мокап, светлая тема, фото и т.д.) — в отличие от
+   .case__nda, которой достаточно 12%, потому что она всегда на светлом
+   --case-accent, а не на произвольной картинке. */
+.visuals-grid__tag{
+  position:absolute;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:1;
+  margin:0;
+  padding:6px 10px;
+  border-radius:4px;
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  color:#fff;
+  font-family:var(--font-body);
+  font-size:0.875rem;
+  line-height:1;
+  white-space:nowrap;
+}
 .visuals-grid__link img{
   width:100%;
   height:100%;
   object-fit:cover;
-  transition:transform .4s ease;
+  transform:translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0) scale(1);
+  transition:transform .5s ease;
 }
 .visuals-grid__link:hover img{
-  transform:scale(1.03);
+  transform:translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0) scale(1.04);
+}
+/* пока курсор активно двигается внутри тайла — догоняем его быстрее,
+   тот же приём, что у .case__cover (см. case-parallax.js) */
+.visuals-grid__link.is-tracking img{
+  transition:transform .2s ease-out;
 }
 
 @media (max-width:900px){
@@ -84,6 +115,8 @@
   }
   .visuals-title{ grid-column:1; }
   .visuals-intro{ grid-column:1; padding-top:8px; }
+
+  .visuals-grid__tag{ display:none; } /* не влезают в узкие тайлы на мобиле */
 
   /* 2 в ряд, а не 3: высокий тайл слева на две строки, справа от
      него — 2 и 3 друг под другом, ниже отдельным рядом — 4 и 5 */

@@ -1,9 +1,9 @@
 {
   "items": [
-    { "id": "visual-1", "size": "tall",   "cover": "/images/shared/visuals/visual-1.webp", "alt": "Visual 1", "href": "/en/visuals/visual-1.html" },
-    { "id": "visual-2", "size": "square", "cover": "/images/shared/visuals/visual-2.webp", "alt": "Visual 2", "href": "/en/visuals/visual-2.html" },
-    { "id": "visual-3", "size": "square", "cover": "/images/shared/visuals/visual-3.webp", "alt": "Visual 3", "href": "/en/visuals/visual-3.html" },
-    { "id": "visual-4", "size": "square", "cover": "/images/shared/visuals/visual-4.webp", "alt": "Visual 4", "href": "/en/visuals/visual-4.html" },
-    { "id": "visual-5", "size": "square", "cover": "/images/shared/visuals/visual-5.webp", "alt": "Visual 5", "href": "/en/visuals/visual-5.html" }
+    { "id": "visual-1", "size": "tall",   "cover": "/images/shared/visuals/visual-1.webp", "alt": "Mood tracker screen: weekly calendar and a layered flower visualization broken down into calm, sadness and anxiety percentages", "label": "Mood tracker", "href": "/en/visuals/visual-1.html" },
+    { "id": "visual-2", "size": "square", "cover": "/images/shared/visuals/visual-2.webp", "alt": "Smart home screen: device cards by room — lamp, speaker, kettle, robot vacuum", "label": "Smart home", "href": "/en/visuals/visual-2.html" },
+    { "id": "visual-3", "size": "square", "cover": "/images/shared/visuals/visual-3.webp", "alt": "Meeting calendar: month schedule on the left and events by day on the right, with an AI suggestion to review an overloaded week", "label": "Meeting calendar", "href": "/en/visuals/visual-3.html" },
+    { "id": "visual-4", "size": "square", "cover": "/images/shared/visuals/visual-4.webp", "alt": "Meeting analytics section: number of created and completed meetings with a trend chart by day", "label": "Meeting analytics", "href": "/en/visuals/visual-4.html" },
+    { "id": "visual-5", "size": "square", "cover": "/images/shared/visuals/visual-5.webp", "alt": "Excursion search screen for Saint Petersburg with a tour card and its rating and price", "label": "Excursion booking", "href": "/en/visuals/visual-5.html" }
   ]
 }

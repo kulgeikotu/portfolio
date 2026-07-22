@@ -16,6 +16,21 @@
   border-top:1px solid var(--color-hairline);
 }
 
+/* Scroll-stack (только десктоп ≥901px, см. брейкпоинт мобильной версии
+   карточки ниже): каждая карточка залипает под хедером на своей
+   естественной высоте, следующая наезжает поверх нею же (дивайдер сверху —
+   это и есть кромка, с которой начинается наложение). Без JS — чистый
+   position:sticky + возрастающий z-index по порядку в разметке
+   (--case-i задаётся инлайн через {{ @index }} в index.html). */
+@media (min-width:901px){
+  .case{
+    position:sticky;
+    top:var(--header-h);
+    z-index:var(--case-i, 0);
+    background:var(--color-photo-bg);
+  }
+}
+
 .case__tag{
   position:absolute;
   top:50%;
@@ -143,6 +158,25 @@
   color:var(--color-body);
   text-align:right;
   white-space:nowrap;
+}
+
+/* Точный вертикальный ритм карточки — только десктоп (мобильный ритм
+   не трогаем, у него свой gap:12px и своя раскладка футера ниже).
+   Заменяет универсальный gap:20px на точечные margin-top между парами
+   элементов + переопределяет отступы от края (было 64px). */
+@media (min-width:901px){
+  .case__content{
+    gap:0;
+    padding-block:52px;
+  }
+  .case__title{ margin-top:4px; }
+  .case__metric{ margin-top:12px; }
+  .case__cover{ margin-top:40px; }
+  .case__footer{ margin-top:20px; }
+
+  /* заголовок кейса beeline-crm длиннее остальных и на 840px-колонке
+     переносится — здесь его не переносим специально */
+  #beeline-crm .case__title{ white-space:nowrap; }
 }
 
 @media (max-width:900px){

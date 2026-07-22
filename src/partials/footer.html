@@ -2,7 +2,13 @@
 <footer id="contacts" class="section-contacts">
   <div class="container">
     <div class="contacts-cta">
-      <h2 class="contacts-title reveal">{{ t.[contacts.title] }}</h2>
+      <h2 class="contacts-title reveal" aria-label="{{ t.[contacts.title] }}">
+        <span aria-hidden="true">
+          {{#each t.[contacts.titleLines]}}
+          <span class="contacts-title__line"><span class="contacts-title__line-inner">{{ this }}</span></span>
+          {{/each}}
+        </span>
+      </h2>
       <div class="contacts-buttons">
         <a class="btn btn--solid" href="https://telegram.me/kulgeiko" target="_blank" rel="noopener" data-track="telegram_open">{{ t.[contacts.telegram] }}</a>
         <a class="btn btn--outline" href="https://drive.google.com/file/d/1Hh1bT_1pvAWDIs8ADEqvBIuettlif_6B/view?usp=sharing" target="_blank" rel="noopener" data-track="resume_open">{{ t.[contacts.resume] }}</a>

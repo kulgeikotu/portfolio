@@ -159,15 +159,13 @@
           <h3 class="case-callouts__heading">Основной экран</h3>
           <div class="case-callouts__stage case-callouts__stage--single">
             <div class="case-callouts__frame">
-              <img class="case-callouts__screen" src="/images/ru/cases/fortis-drivers/main-screen.webp" alt="Экран «Перевозки», вкладка «Рейсы»" width="904" height="1852" loading="lazy" decoding="async">
+              <!-- баблы «статусы» и «вкладки» впечены прямо в картинку (desktop);
+                   на мобиле впечён только «статусы» — «вкладки» ниже, обычным баблом в потоке -->
+              <picture>
+                <source media="(max-width:1100px)" srcset="/images/ru/cases/fortis-drivers/main-screen-annotated-mobile.webp">
+                <img class="case-callouts__screen" src="/images/ru/cases/fortis-drivers/main-screen-annotated.webp" alt="Экран «Перевозки», вкладка «Рейсы», с подсказками про вкладки и статусы заявок" width="3183" height="2778" loading="lazy" decoding="async">
+              </picture>
 
-              <!-- на мобиле остаётся плавающим баблом поверх экрана (см. docs/04_01_mobile.png) -->
-              <div class="case-callout case-callout--status">
-                <p>Статусы подсказывают, что делать – «Подтвердите заявку», «Исправьте документы» и&nbsp;на&nbsp;каком этапе заказ – «Обработка документов», «Оплата до&nbsp;5&nbsp;июня». Это снимает лишние звонки в&nbsp;поддержку.</p>
-              </div>
-              <img class="case-callout__arrow case-callout__arrow--status" src="/images/ru/cases/fortis-drivers/arrows/desktop-2.svg" alt="" width="79" height="142" aria-hidden="true">
-
-              <!-- на мобиле схлопывается в обычный текст под экраном -->
               <div class="case-callout case-callout--tabs">
                 <p>Вкладки повторяют этапы работы дальнобойщика:</p>
                 <ul>
@@ -176,10 +174,6 @@
                   <li>Архив — заказ завершён</li>
                 </ul>
               </div>
-              <img class="case-callout__arrow case-callout__arrow--tabs" src="/images/ru/cases/fortis-drivers/arrows/desktop-1.svg" alt="" width="417" height="56" aria-hidden="true">
-
-              <!-- только на мобиле: тот же бабл статусов, стрелка своя, мобильная -->
-              <img class="case-callout__arrow case-callout__arrow--status-mobile" src="/images/ru/cases/fortis-drivers/arrows/mobile-1.svg" alt="" width="84" height="186" aria-hidden="true">
             </div>
           </div>
         </div>
@@ -189,34 +183,18 @@
 
           <div class="case-callouts__stage case-callouts__stage--pair">
             <div class="case-callouts__frame">
-              <img class="case-callouts__screen" src="/images/ru/cases/fortis-drivers/loading-screens.webp" alt="Экраны заявки СПБ700 «Вы на погрузке» и модалки «Сообщить об убытии»" width="1472" height="2560" loading="lazy" decoding="async">
-
-              <div class="case-callout case-callout--ontime">
-                <p>Показываем, что водитель прибыл вовремя</p>
-              </div>
-              <img class="case-callout__arrow case-callout__arrow--ontime" src="/images/ru/cases/fortis-drivers/arrows/desktop-4.svg" alt="" width="51" height="18" aria-hidden="true">
-
-              <div class="case-callout case-callout--docs">
-                <p>Напоминаем про накладные документы, чтобы не&nbsp;забыть</p>
-              </div>
-              <img class="case-callout__arrow case-callout__arrow--docs" src="/images/ru/cases/fortis-drivers/arrows/desktop-5.svg" alt="" width="282" height="58" aria-hidden="true">
-
-              <div class="case-callout case-callout--time">
-                <p>Время проставляется автоматически при&nbsp;открытии шага</p>
-              </div>
-              <img class="case-callout__arrow case-callout__arrow--time" src="/images/ru/cases/fortis-drivers/arrows/desktop-3.svg" alt="" width="160" height="123" aria-hidden="true">
-
-              <div class="case-callout case-callout--temp">
-                <p>Контроль температурного режима. Водитель ставит на&nbsp;прицепе температуру из&nbsp;заявки. Но&nbsp;на&nbsp;погрузке он&nbsp;получает новые документы и&nbsp;вводит данные из&nbsp;них. Если температура расходится — система ловит это, защищая бизнес от&nbsp;возможных убытков.</p>
-              </div>
-              <img class="case-callout__arrow case-callout__arrow--temp" src="/images/ru/cases/fortis-drivers/arrows/desktop-6.svg" alt="" width="196" height="584" aria-hidden="true">
+              <img class="case-callouts__screen" src="/images/ru/cases/fortis-drivers/loading-screens-annotated.webp" alt="Экраны заявки СПБ700 «Вы на погрузке» и модалки «Сообщить об убытии» с подсказками про статус прибытия, документы, время и температурный режим" width="3924" height="3840" loading="lazy" decoding="async">
             </div>
           </div>
 
-          <!-- мобильная версия — готовые композиции с баблами от Татьяны, без HTML-оверлея -->
+          <!-- мобильная версия — готовые композиции с баблами от Татьяны, без HTML-оверлея;
+               «temp» не впечён во второй мобильный экран — обычный текст под ним (на десктопе уже виден в картинке) -->
           <div class="case-callouts__mobile-pair">
-            <img src="/images/ru/cases/fortis-drivers/loading-screens-mobile-1.webp" alt="Экран заявки СПБ700 «Вы на погрузке» с подсказками" width="370" height="740" loading="lazy" decoding="async">
-            <img src="/images/ru/cases/fortis-drivers/loading-screens-mobile-2.webp" alt="Модалка «Сообщить об убытии» с подсказкой" width="722" height="2568" loading="lazy" decoding="async">
+            <img src="/images/ru/cases/fortis-drivers/loading-screens-mobile-1.webp" alt="Экран заявки СПБ700 «Вы на погрузке» с подсказками" width="1110" height="2220" loading="lazy" decoding="async">
+            <img src="/images/ru/cases/fortis-drivers/loading-screens-mobile-2.webp" alt="Модалка «Сообщить об убытии» с подсказкой про время убытия" width="1083" height="3852" loading="lazy" decoding="async">
+            <div class="case-callout case-callout--temp">
+              <p>Контроль температурного режима. Водитель ставит на&nbsp;прицепе температуру из&nbsp;заявки. Но&nbsp;на&nbsp;погрузке он&nbsp;получает новые документы и&nbsp;вводит данные из&nbsp;них. Если температура расходится — система ловит это, защищая бизнес от&nbsp;возможных убытков.</p>
+            </div>
           </div>
         </div>
       </div>

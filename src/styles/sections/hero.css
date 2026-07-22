@@ -174,4 +174,5 @@
   }
   .hero-bottom{ order:3; }
   .hero-divider{ display:none; }
+  .hero-text__break{ display:none; } /* на мобиле оба предложения — обычный поток, без принудительного переноса */
 }

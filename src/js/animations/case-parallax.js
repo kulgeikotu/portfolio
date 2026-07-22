@@ -1,7 +1,8 @@
 // Лёгкий tilt/параллакс на обложках кейсов: картинка чуть смещается
 // в сторону, противоположную курсору, поверх существующего scale-hover.
 // Тот же эффект — на обложках «Другие кейсы» в футере страниц кейсов
-// (.other-case__cover), для единообразия hover-поведения по всему сайту.
+// (.other-case__cover) и на тайлах визуалов на главной (.visuals-grid__link),
+// для единообразия hover-поведения по всему сайту.
 const MAX_SHIFT = 6; // px, максимальное смещение по каждой оси
 
 export function initCaseParallax() {
@@ -9,7 +10,7 @@ export function initCaseParallax() {
   const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
   if (prefersReducedMotion || isCoarsePointer) return;
 
-  const covers = document.querySelectorAll('.case__cover, .other-case__cover');
+  const covers = document.querySelectorAll('.case__cover, .other-case__cover, .visuals-grid__link');
 
   covers.forEach((cover) => {
     let frame = null;

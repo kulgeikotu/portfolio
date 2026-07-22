@@ -706,19 +706,38 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
 /* ---------- Баблы-подсказки поверх экранов (04, только Fortis) ----------
    В отличие от .case-decision (CRM/География — модалка ведёт к развилке
    исходов), тут баблы — свободные аннотации конкретных элементов экрана.
-   Татьяна пришлёт свои SVG-стрелки для десктопа и мобилы, когда вместо
-   серых заглушек встанут реальные скриншоты — текущие path/координаты
-   ниже условные (нарисованы по docs/04_01.png и 04_02.png на глаз) и
-   рассчитаны на замену, а не на пиксель-в-пиксель точность сейчас.
+   Раньше баблы и стрелки к ним были отдельными HTML/SVG-элементами
+   (position:absolute + % от ширины экрана) — оказалось хрупко, то же
+   семейство проблем, что и стрелки-коннекторы у Географии (см.
+   docs/samokat-geo.md). Теперь все баблы впечены прямо в картинки
+   (desktop и mobile — разные версии, см. каждый stage ниже), кроме
+   одного текста на каждый stage, который в мобильную версию картинки не
+   впечён (--tabs у «Основного экрана», --temp у «На точке погрузки») —
+   он остаётся обычным текстом в потоке, без фона бабла (см. мобильный
+   медиазапрос ниже).
 
-   Каждый экран обёрнут в .case-callouts__frame (position:relative) —
-   ВСЕ баблы данного экрана, и «плавающий» на мобиле, и «схлопывающийся»
-   в текст, лежат внутри своего frame. Это позволяет позиционировать
-   баблы через calc(100% + gap) от ширины frame (=ширины экрана), а не
-   от ширины всего stage — координаты остаются верными независимо от
-   того, один экран в stage или два рядом. */
+   Каждый экран обёрнут в .case-callouts__frame (position:relative,
+   max-width задаёт масштаб «слота» под экран) — центрирование картинки
+   с учётом того, что сам экран внутри неё смещён от геометрического
+   центра (из-за полей под баблы), разобрано в комментариях у каждого
+   stage отдельно ниже. */
 .case-callouts{ grid-column:1 / -1; margin-top:56px; }
 .case-callouts + .case-callouts{ margin-top:64px; }
+@media (min-width:1101px){
+  /* div.case-callouts.case-section__media — специфичность заведомо выше,
+     чем у div.case-section__media{margin-top:40px} (см. выше по файлу),
+     а не наравне с ним — иначе выигрыш зависел бы от порядка правил в
+     файле. Без этого у «Основного экрана» (.case-callouts там без
+     такого же соседа сверху) побеждал бы именно тот 40px. */
+  div.case-callouts.case-section__media{ margin-top:112px; }
+  .case-callouts + .case-callouts{ margin-top:112px; }
+}
+@media (max-width:1100px){
+  /* та же специфичность-подстраховка, что и в десктопной версии выше —
+     иначе у «Основного экрана» побеждал бы div.case-section__media{margin-top:40px} */
+  div.case-callouts.case-section__media{ margin-top:64px; }
+  .case-callouts + .case-callouts{ margin-top:64px; }
+}
 .case-callouts__heading{
   margin:0 0 32px;
   text-align:center;
@@ -772,68 +791,66 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
 .case-callout ul{ margin:0; padding-left:16px; }
 .case-callout li + li{ margin-top:2px; }
 
-/* Стрелки — готовые SVG от Татьяны (pic/arrows/), каждая своего размера
-   и формы, а не единая переиспользуемая кривая. ГЛАВНОЕ: стрелка и экран
-   нарисованы в Figma в одном масштабе (тот же кадр), а рендерятся у нас
-   в разных — экран сжат до ширины .case-callouts__frame (напр. 320px из
-   исходных 904px у main-screen.webp), а стрелка раньше стояла в своём
-   исходном пиксельном размере (417×56 и т.д.) — из-за этого получалась
-   непропорционально огромной, бабл «уезжал» далеко и криво. Чиним тем,
-   что задаём ширину стрелки в % от ширины экрана: % = native_arrow_width
-   / native_screen_width — так стрелка масштабируется вместе с экраном
-   при любом брейкпоинте. height:auto сохраняет её родные пропорции.
-   max-width:none переопределяет глобальный img{max-width:100%} из
-   base.css (иначе width в % не сработал бы поверх него). */
-.case-callout__arrow{
-  position:absolute;
-  z-index:2;
-  height:auto;
-  max-width:none;
-  pointer-events:none;
+/* «Основной экран» — баблы «статусы» и «вкладки» больше не отдельные
+   HTML-элементы со стрелками (были хрупкими — то же семейство проблем,
+   что и стрелки-коннекторы у Географии, см. docs/samokat-geo.md): теперь
+   впечены прямо в картинку (main-screen-annotated.webp/-mobile.webp).
+
+   Экран внутри десктопной картинки — НЕ по центру самой картинки (справа
+   от него в кадре ещё и бабл «вкладки», картинка шире экрана), поэтому
+   центруем именно экран, а не картинку целиком. Экран в исходном файле —
+   657–2012px по горизонтали из 3183 нативных. Ширина картинки задана в %
+   от .case-callouts__frame (320px) так, чтобы отмасштабированный экран
+   внутри неё стал ровно 320px (100 / ((2012-657)/3183) ≈ 234.91%), сдвиг
+   отрицательным margin-left переносит левый край экрана на левый край
+   frame (657/3183 × 234.91% ≈ 48.49%). Если картинка поменяется —
+   пересчитывать эти два числа заново по тем же промерам.
+
+   На мобиле («_mobile» картинка) экран уже занимает всю картинку целиком
+   (бабл «статусы» там впечён поверх экрана, а не сбоку в отдельном поле) —
+   сдвиг не нужен, обычный width:100% из базового правила выше. Бабл
+   «вкладки» в мобильную картинку НЕ впечён — остаётся HTML-баблом в
+   потоке (см. .case-callout--tabs ниже), на десктопе прячем — там он уже
+   виден внутри картинки. */
+@media (min-width:1101px){
+  .case-callouts__stage--single .case-callouts__screen{
+    width:234.91%;
+    max-width:none;
+    margin-left:-48.49%;
+    aspect-ratio:3183/2778;
+  }
 }
-.case-callout__arrow--status-mobile{ display:none; }
+@media (max-width:1100px){
+  .case-callouts__stage--single .case-callouts__screen{ aspect-ratio:1104/2220; }
+}
 
-/* «Основной экран» — бабл статусов слева от экрана, бабл вкладок справа
-   (см. 04_01 в docs/ и разметку Татьяны от 21.07 — наконечник статусов
-   на «На исполнении» во второй карточке, наконечник вкладок на «Оплата»;
-   эти top/left/right у *__arrow ниже не трогаем, они уже подтверждены).
+.case-callout--tabs{ display:none; }
 
-   Экран (main-screen.webp) — 904px нативно. Масштаб стрелок:
-   --status (arrows/desktope/2.svg, 79×142) → 79/904 = 8.74% ширины экрана;
-   --tabs (arrows/desktope/1.svg, 417×56) → 417/904 = 46.1% ширины экрана.
+/* «На точке погрузки товара» — все 4 бабла (ontime/docs/time/temp) тоже
+   больше не HTML+стрелки, а впечены в картинку (loading-screens-annotated.webp)
+   — тот же переход, что и у «Основного экрана» выше, по тем же причинам.
 
-   Бабл встаёт серединой верхнего края в точку хвоста стрелки (белый
-   кружок в SVG: circle(6, 135.581) у --status, circle(410.5, 49.2493)
-   у --tabs) — координата кружка пересчитана из его позиции внутри уже
-   отмасштабированного бокса стрелки в проценты от .case-callouts__frame. */
-/* Ширина баблов увеличена по просьбе Татьяны (меньше строк переноса) —
-   left пересчитан так, чтобы центр бабла остался в той же точке (хвост
-   стрелки), только сама ширина выросла; стрелки (top/left/right/width
-   у *__arrow) не трогаем. */
-.case-callout--status{ top:47.3%; left:-53%; width:90%; }
-.case-callout__arrow--status{ top:40%; right:100%; width:8.74%; }
-.case-callout--tabs{ top:11.7%; left:51.4%; width:92%; }
-.case-callout__arrow--tabs{ top:9%; left:52%; width:46.1%; }
+   Оба экрана внутри картинки — НЕ по центру самой картинки (слева/справа
+   от них — поля под баблы), поэтому центруем сами экраны (от левого края
+   первого до правого края второго), не картинку целиком. В исходном
+   файле экраны занимают 777–2984px по горизонтали из 3924 нативных.
+   Ширина картинки — в % от .case-callouts__frame (640px), чтобы пара
+   экранов внутри стала ровно 640px (100 / ((2984-777)/3924) ≈ 177.8%),
+   сдвиг отрицательным margin-left переносит левый край первого экрана на
+   левый край frame (777/3924 × 177.8% ≈ 35.21%). Пересчитывать по тем же
+   промерам, если картинка поменяется.
 
-/* «На точке погрузки товара» — у первого (левого) экрана оба бабла
-   слева (ontime сверху, docs снизу), у второго (правого) — оба справа
-   (time сверху, temp снизу), см. 04_02 в docs/. Проценты top/left/right —
-   пока черновые (ждём разметку с точками-наконечниками, как для 04_01);
-   width у стрелок — уже отмасштабирован по тому же принципу, что и
-   --status/--tabs (native_arrow_width / native_screen_width), экран —
-   loading-screens.webp, 1472px нативно:
-   --ontime (arrows/desktope/4.svg, 51px)  → 51/1472  = 3.46%
-   --docs   (arrows/desktope/5.svg, 282px) → 282/1472 = 19.2%
-   --time   (arrows/desktope/3.svg, 160px) → 160/1472 = 10.87%
-   --temp   (arrows/desktope/6.svg, 196px) → 196/1472 = 13.3% */
-.case-callout--ontime{ top:12%; right:calc(100% + 40px); }
-.case-callout__arrow--ontime{ top:12%; right:100%; width:3.46%; }
-.case-callout--docs{ top:24%; right:calc(100% + 40px); }
-.case-callout__arrow--docs{ top:21%; right:100%; width:19.2%; }
-.case-callout--time{ top:8%; left:calc(100% + 40px); }
-.case-callout__arrow--time{ top:6%; left:100%; width:10.87%; }
-.case-callout--temp{ top:48%; left:calc(100% + 40px); width:270px; }
-.case-callout__arrow--temp{ top:48%; left:100%; width:13.3%; }
+   Мобильные картинки (loading-screens-mobile-1/2.webp) — экран уже на всю
+   картинку, сдвиг не нужен. «temp» в мобильную-2 не впечён — обычный
+   текст под ней (см. .case-callout--tabs выше — то же самое решение),
+   лежит прямо в разметке внутри .case-callouts__mobile-pair. */
+.case-callouts__stage--pair .case-callouts__screen{
+  width:177.8%;
+  max-width:none;
+  margin-left:-35.21%;
+  aspect-ratio:3924/3840;
+}
+.case-callout--temp{ display:none; }
 
 @media (max-width:1100px){
   /* Тот же брейкпоинт, что и у текстовых колонок/основного мобильного
@@ -842,15 +859,25 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
      по обе стороны от экрана с зазором уже не помещаются в доступную
      ширину вьюпорта. */
   .case-callout{ position:static; width:auto; margin-top:16px; }
-  .case-callout__arrow{ display:none; }
+  /* на десктопе оба впечены в картинку; на мобиле — не баблы, а обычный
+     текст в потоке под картинкой (тот же стиль, что у .case-section__text) */
+  .case-callout--tabs,
+  .case-callout--temp{
+    display:block;
+    background:none;
+    padding:0;
+    border-radius:0;
+    font-size:16px;
+    line-height:24px;
+    color:var(--color-body);
+  }
 }
 
 @media (max-width:1100px){
   /* Основной мобильный брейкпоинт.
-     «Основной экран» (один экран) — «схлопывающийся» бабл (tabs)
-     остаётся обычным текстом в потоке сразу после экрана; «плавающий»
-     (status) возвращается поверх экрана со своей мобильной стрелкой —
-     см. docs/04_01_mobile.png. Координаты условные, уточняются по месту.
+     «Основной экран» (один экран) — «статусы» впечены прямо в мобильную
+     картинку (main-screen-annotated-mobile.webp), «вкладки» остаются
+     обычным текстом в потоке сразу после экрана (см. правило выше).
      «На точке погрузки» (пара экранов) — десктопный stage (картинка +
      HTML-баблы) скрывается целиком, вместо него показываются готовые
      мобильные PNG с уже вклеенными баблами (.case-callouts__mobile-pair). */
@@ -858,26 +885,11 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
   .case-callouts__mobile-pair{ display:block; }
 
   .case-callouts__frame{ max-width:320px; }
-
-  .case-callout--status{
-    position:absolute;
-    z-index:2;
-    top:auto;
-    bottom:16px;
-    left:16px;
-    right:16px;
-    width:calc(100% - 32px);
-    margin-top:0;
-  }
-  .case-callout__arrow--status-mobile{
-    display:block;
-    position:absolute;
-    z-index:1;
-    bottom:40%;
-    right:8px;
-    max-width:none;
-    pointer-events:none;
-  }
+  /* «Основной экран» — на мобиле картинка растягивается на всю ширину,
+     как и мобильные картинки «На точке погрузки» (.case-callouts__mobile-pair
+     img{ width:100% }) — тот же 320px-кап нужен только на десктопе, чтобы
+     отмасштабировать под экран внутри картинки (см. правило выше). */
+  .case-callouts__stage--single .case-callouts__frame{ max-width:none; }
 }
 
 /* Без анимации показываем всё в конечном состоянии сразу — те же правила,
