@@ -6,7 +6,10 @@ export function initLangSwitch() {
 
   btn.addEventListener('click', (e) => {
     e.preventDefault();
-    const path = window.location.pathname;
+    // BASE_URL — корень сайта (например '/portfolio/' на GitHub Pages, '/' на своём домене)
+    const base = import.meta.env.BASE_URL;
+    const fullPath = window.location.pathname;
+    const path = '/' + fullPath.slice(base.length); // путь относительно base
     const isEn = path.startsWith('/en/') || path === '/en';
 
     let target;
@@ -17,6 +20,8 @@ export function initLangSwitch() {
       // RU -> EN: добавляем префикс /en
       target = '/en' + (path === '/' ? '/' : path);
     }
+
+    target = base.slice(0, -1) + target;
 
     // запоминаем выбор языка на будущее
     try {

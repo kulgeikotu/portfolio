@@ -3,6 +3,10 @@ import { resolve } from 'path';
 import handlebars from 'vite-plugin-handlebars';
 import { readFileSync } from 'fs';
 
+// Базовый путь без слэша на конце — им же префиксуем ссылки в шаблонах,
+// т.к. Vite сам переписывает base только для img/script/link, но не для <a href>.
+const REPO_BASE = '/portfolio';
+
 // --- Загружаем словари переводов ---------------------------------
 const ru = JSON.parse(readFileSync(resolve(__dirname, 'src/locales/ru.json'), 'utf-8'));
 const en = JSON.parse(readFileSync(resolve(__dirname, 'src/locales/en.json'), 'utf-8'));
@@ -21,6 +25,7 @@ function pageContext(lang) {
   const isEn = lang === 'en';
   return {
     lang,
+    base: REPO_BASE,
     t: isEn ? en : ru,
     cases: isEn ? casesEn.cases : casesRu.cases,
     experience: isEn ? experienceEn.items : experienceRu.items,
@@ -31,7 +36,7 @@ function pageContext(lang) {
 export default defineConfig({
   // базовый путь; при деплое на свой домен оставь '/',
   // для GitHub Pages в подпапке — поменяй на '/имя-репо/'
-  base: '/portfolio/',
+  base: REPO_BASE + '/',
 
   plugins: [
     handlebars({

@@ -8,7 +8,7 @@
       {{#each cases}}
       {{#unless (eq this.id ../currentCaseId)}}
       <li class="other-case reveal reveal--fade">
-        <a class="other-case__link" href="{{ this.href }}">
+        <a class="other-case__link" href="{{ ../base }}{{ this.href }}">
           <span class="other-case__meta">{{ this.company }} · {{ this.segment }}</span>
           {{#if (eq this.id "fortis-drivers")}}
             {{#if (eq ../lang "en")}}

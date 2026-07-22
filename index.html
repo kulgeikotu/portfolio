@@ -55,7 +55,7 @@
               <p class="case__company">{{ this.company }}</p>
               <h3 class="case__title">{{ this.title }}</h3>
               <p class="case__metric">{{ this.metric }}</p>
-              <a class="case__cover" href="{{ this.href }}" style="--case-accent:{{ this.accent }}">
+              <a class="case__cover" href="{{ ../base }}{{ this.href }}" style="--case-accent:{{ this.accent }}">
                 {{#if this.nda}}<span class="case__nda">NDA</span>{{/if}}
                 <img src="{{ this.cover }}" alt="{{ this.coverAlt }}" loading="lazy" decoding="async">
               </a>
@@ -103,7 +103,7 @@
         <ul class="visuals-grid">
           {{#each visuals}}
           <li class="visuals-grid__item reveal reveal--fade">
-            <a class="visuals-grid__link" href="{{ this.href }}">
+            <a class="visuals-grid__link" href="{{ ../base }}{{ this.href }}">
               <img src="{{ this.cover }}" alt="{{ this.alt }}" loading="lazy" decoding="async">
             </a>
           </li>
