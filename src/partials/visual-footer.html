@@ -1,0 +1,20 @@
+{{!-- Нижняя навигация страниц визуалов — стрелки влево/вправо (переключение
+    между визуалами по кругу) и крестик (закрыть, назад на главную в #visuals).
+    prev/next (1-5, числа) и current передаются при подключении:
+    {{> visual-footer current=1 prev=5 next=2 }}. Иконки инлайновые
+    (fill=currentColor) — цвет и hover берутся из темы, см. visual.css. --}}
+<footer class="visual-footer">
+  <div class="visual-footer__inner">
+    <a class="visual-footer__arrow visual-footer__arrow--prev" href="{{ base }}{{#if (eq lang 'en')}}/en{{/if}}/visuals/visual-{{ prev }}.html" aria-label="{{ t.[visualNav.prev] }}">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true"><path d="M7.99213 7C8.75 7.75799 8.75 7.7575 9.05365 8.06152L5.56049 11.5537H20.7499V13.0537H5.56049L9.05365 16.5459C8.29584 17.3037 8.75 16.8496 7.99213 17.6074L3.21967 12.834C2.92678 12.5411 2.92678 12.0663 3.21967 11.7734L7.99213 7Z" fill="currentColor"/></svg>
+    </a>
+
+    <a class="visual-footer__close" href="{{ base }}{{ t.[caseHeader.homeHref] }}#visuals" aria-label="{{ t.[visualNav.close] }}">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true"><path d="M20 18.7686L13.2311 12L20 5.23137L18.7693 4.0007L12.0004 10.7693L5.23071 4L4 5.23066L10.7696 12L4 18.7693L5.23071 20L12.0004 13.2307L18.7693 19.9993L20 18.7686Z" fill="currentColor"/></svg>
+    </a>
+
+    <a class="visual-footer__arrow visual-footer__arrow--next" href="{{ base }}{{#if (eq lang 'en')}}/en{{/if}}/visuals/visual-{{ next }}.html" aria-label="{{ t.[visualNav.next] }}">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true"><path d="M16.0079 7C15.25 7.75799 15.25 7.7575 14.9463 8.06152L18.4395 11.5537L3.25006 11.5537V13.0537L18.4395 13.0537L14.9463 16.5459C15.7042 17.3037 15.25 16.8496 16.0079 17.6074L20.7803 12.834C21.0732 12.5411 21.0732 12.0663 20.7803 11.7734L16.0079 7Z" fill="currentColor"/></svg>
+    </a>
+  </div>
+</footer>

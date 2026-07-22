@@ -1,0 +1,48 @@
+/* =====================================================
+   DOT-MATRIX LOADER — индикатор загрузки картинок.
+   Идея — с dotmatrix.zzzzshawn.cloud (5×5 точек, спиральная волна
+   от края к центру), переписана на ванильном CSS/JS: у сайта нет
+   React/Tailwind, поэтому оригинальный shadcn-компонент не встраивался
+   напрямую. Точки вставляет src/js/image-loader.js, порядок волны —
+   через --dmx-order (0…24) на каждой точке.
+   ===================================================== */
+.dotmatrix-loader{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--color-photo-bg);
+  transition:opacity .3s ease;
+}
+.dotmatrix-loader.is-hidden{
+  opacity:0;
+  pointer-events:none;
+}
+.dotmatrix-loader__grid{
+  display:grid;
+  grid-template-columns:repeat(5, 6px);
+  grid-template-rows:repeat(5, 6px);
+  gap:3px;
+}
+.dotmatrix-loader__dot{
+  width:6px;
+  height:6px;
+  background:var(--color-ink);
+  opacity:0.15;
+  animation:dmx-pulse 1.35s ease-in-out infinite;
+  animation-delay:calc(var(--dmx-order, 0) * 0.045s);
+}
+@keyframes dmx-pulse{
+  0%, 100%{ opacity:0.15; }
+  35%{ opacity:1; }
+}
+@media (prefers-reduced-motion: reduce){
+  .dotmatrix-loader__dot{ animation:none; opacity:0.4; }
+}
+
+/* Скругление у оверлея — как у самой картинки в этом контексте, иначе
+   квадратные углы лоадера торчат из-под скруглённого фото/скриншота. */
+.case-shot .dotmatrix-loader{ border-radius:8px; }
+.case-flow .dotmatrix-loader{ border-radius:6px; }

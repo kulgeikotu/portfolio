@@ -11,7 +11,7 @@
    переопределяем H1-токен только внутри страницы кейса (глобальный
    --fs-h1 в tokens.css трогать нельзя, он общий для всего сайта). */
 .case-page{ --fs-h1:56px; --ls-h1:-2px; }
-@media (max-width:900px){
+@media (max-width:1100px){
   .case-page{ --fs-h1:32px; --ls-h1:-0.03em; } /* -3% */
 }
 
@@ -100,6 +100,7 @@
 
 /* картинка вырывается из .container на всю ширину вьюпорта */
 .case-hero__media{
+  position:relative; /* якорь для .dotmatrix-loader (image-loader.js) */
   width:100vw;
   margin-left:calc(50% - 50vw);
   margin-right:calc(50% - 50vw);
@@ -112,7 +113,7 @@
   object-fit:cover;
 }
 
-@media (max-width:900px){
+@media (max-width:1100px){
   .case-hero{ padding-top:112px; }
   .case-hero__head{
     grid-template-columns:1fr;
@@ -332,8 +333,14 @@ div.case-section__media{
    выше специфичность, побеждает независимо от порядка (как div.case-section__media выше). */
 div.case-section__text.case-section__text--group{ margin-top:32px; }
 
-/* На 900–1100px (напр. 1024px) двум колонкам по span 4 тесно — складываем
-   их вертикально на всю ширину текстового блока (5/span8). */
+/* ≤1100px двум колонкам по span 4 тесно — складываем их вертикально на
+   всю ширину текстового блока (5/span8). Тот же брейкпоинт, что и у
+   основного мобильного блока ниже (.case-section{display:flex}) —
+   раньше это было два разных порога (1100 и 900), из-за чего на 1024px
+   получался неудачный гибрид: текст уже мобильный, а отступы/картинки
+   ещё десктопные. grid-column здесь теперь избыточен для текста (тот же
+   элемент сразу становится flex-item), но не мешает — оставлен, чтобы не
+   переписывать блок целиком. */
 @media (max-width:1100px){
   .case-section__text--a,
   .case-section__text--b{ grid-column:5 / span 8; }
@@ -356,7 +363,7 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
   .case-section__text--row1{ grid-row:auto; }
 }
 
-@media (max-width:900px){
+@media (max-width:1100px){
   .case-section{
     display:flex;
     flex-direction:column;
@@ -393,14 +400,15 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
 }
 
 /* ---------- Flow diagrams (AS IS / TO BE svg) ---------- */
-.case-flow{ margin:0; display:block; } /* сбрасываем дефолтный margin:1em 40px
+.case-flow{ position:relative; margin:0; display:block; } /* position:relative — якорь для
+  .dotmatrix-loader (image-loader.js); сбрасываем дефолтный margin:1em 40px
   у <figure> — иначе схема не дотягивает до полной ширины колонок */
 .case-flow img,
 .case-flow svg{
   width:100%;
   height:auto;
   display:block;
-  border-radius:6px;
+  border-radius:4px;
 }
 .case-flow figcaption{
   margin-top:16px;
@@ -429,7 +437,7 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
 .case-quote{
   position:relative;
   overflow:hidden; /* обрезаем блик по границе картинки */
-  border-radius:8px; /* совпадает с .case-shot img — сама figure тоже скруглена */
+  border-radius:4px; /* совпадает с .case-shot img — сама figure тоже скруглена */
 }
 .case-quote::before{
   content:"";
@@ -457,7 +465,7 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
   width:100%;
   min-height:120px;
   background:#E4E0DA;
-  border-radius:8px;
+  border-radius:4px;
   padding:24px;
   box-sizing:border-box;
   font-family:var(--font-body);
@@ -481,12 +489,12 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
 }
 
 /* ---------- Screenshots ---------- */
-.case-shot{ margin:0; }
+.case-shot{ position:relative; margin:0; } /* position:relative — якорь для .dotmatrix-loader (image-loader.js) */
 .case-shot img{
   width:100%;
   height:auto;
   display:block;
-  border-radius:8px;
+  border-radius:4px;
 }
 .case-shot figcaption{
   margin-top:16px;
@@ -522,7 +530,7 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
    отступ нужен отдельно */
 .case-decision__second{ grid-column:5 / span 8; grid-row:4; margin-top:40px; }
 
-@media (max-width:900px){
+@media (max-width:1100px){
   .case-decision__modal{ margin-top:32px; }
   .case-decision__first{ margin-top:16px; } /* рядом с модалкой — тот же
     случай «между картинками», что и общее правило .case-shot+.case-shot */
@@ -577,7 +585,7 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
   .case-decision__second{ grid-row:5; }
 }
 
-@media (max-width:900px){
+@media (max-width:1100px){
   .case-decision__modal,
   .case-decision__first,
   .case-decision__second{ grid-column:5 / span 8; }
@@ -671,7 +679,7 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
   color:#ffffff;
 }
 
-@media (max-width:900px){
+@media (max-width:1100px){
   .case-stats{ grid-template-columns:1fr; }
 }
 
@@ -686,7 +694,7 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
   max-width:970px;
 }
 .case-stats--triple .case-stats__item{ flex:0 1 calc(50% - 8px); }
-@media (max-width:900px){
+@media (max-width:1100px){
   .case-stats--triple .case-stats__item{ flex:1 1 100%; }
 }
 
@@ -733,7 +741,7 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
   display:block;
   width:100%;
   height:auto;
-  border-radius:8px;
+  border-radius:4px;
 }
 .case-callouts__stage--single .case-callouts__frame{ max-width:320px; }
 .case-callouts__stage--pair .case-callouts__frame{ max-width:640px; }
@@ -742,7 +750,7 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
    вклеенными баблами/стрелками (см. docs/04_02_mobile.png) — просто два
    изображения друг под другом, без HTML-баблов и без стрелок отдельно. */
 .case-callouts__mobile-pair{ display:none; }
-.case-callouts__mobile-pair img{ display:block; width:100%; height:auto; border-radius:8px; }
+.case-callouts__mobile-pair img{ display:block; width:100%; height:auto; border-radius:4px; }
 .case-callouts__mobile-pair img + img{ margin-top:16px; }
 
 .case-callout{
@@ -798,9 +806,13 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
    кружок в SVG: circle(6, 135.581) у --status, circle(410.5, 49.2493)
    у --tabs) — координата кружка пересчитана из его позиции внутри уже
    отмасштабированного бокса стрелки в проценты от .case-callouts__frame. */
-.case-callout--status{ top:47.3%; left:-43%; width:70%; }
+/* Ширина баблов увеличена по просьбе Татьяны (меньше строк переноса) —
+   left пересчитан так, чтобы центр бабла остался в той же точке (хвост
+   стрелки), только сама ширина выросла; стрелки (top/left/right/width
+   у *__arrow) не трогаем. */
+.case-callout--status{ top:47.3%; left:-53%; width:90%; }
 .case-callout__arrow--status{ top:40%; right:100%; width:8.74%; }
-.case-callout--tabs{ top:11.7%; left:57.4%; width:80%; }
+.case-callout--tabs{ top:11.7%; left:51.4%; width:92%; }
 .case-callout__arrow--tabs{ top:9%; left:52%; width:46.1%; }
 
 /* «На точке погрузки товара» — у первого (левого) экрана оба бабла
@@ -824,15 +836,16 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
 .case-callout__arrow--temp{ top:48%; left:100%; width:13.3%; }
 
 @media (max-width:1100px){
-  /* тот же брейкпоинт «тесно», что и у текстовых колонок выше — баблы
+  /* Тот же брейкпоинт, что и у текстовых колонок/основного мобильного
+     блока ниже (раньше был отдельным, более ранним порогом — 1100 вместо
+     900 — теперь они совпадают, см. .case-section{display:flex}) — баблы
      по обе стороны от экрана с зазором уже не помещаются в доступную
-     ширину вьюпорта, поэтому убираем позиционирование заранее, а не
-     только на основном мобильном брейкпоинте 900px. */
+     ширину вьюпорта. */
   .case-callout{ position:static; width:auto; margin-top:16px; }
   .case-callout__arrow{ display:none; }
 }
 
-@media (max-width:900px){
+@media (max-width:1100px){
   /* Основной мобильный брейкпоинт.
      «Основной экран» (один экран) — «схлопывающийся» бабл (tabs)
      остаётся обычным текстом в потоке сразу после экрана; «плавающий»
@@ -883,32 +896,70 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
    чтобы обе колонки делили ширину 50/50 без изменения разметки колонок. */
 .case-section__text-group-columns > .case-shot{ flex:1; margin-top:0; }
 
+/* Текст рядом с картинкой (Спецификации/Редактура) — сбрасываем ту же
+   margin-top:0, что уже стоит у .case-section__text-group-columns
+   > .case-section__text (строка выше по файлу), но её перебивают более
+   поздние общие правила «после картинки» (.case-shot ~ .case-section__text:40px
+   на десктопе, .case-shot + .case-section__text:32px на мобиле — та же
+   специфичность, 2 класса, побеждают по порядку в файле). Из-за этого
+   расстояние картинка→текст складывалось из margin ДОБАВОЧНО к gap
+   родителя: 24+40=64px на десктопе, 16+32=48px на мобиле, вместо чистых
+   24/16px. Три простых селектора вместо двух — специфичность выше,
+   побеждает независимо от порядка. */
+.case-section__text-group-columns > .case-shot + .case-section__text{ margin-top:0; }
+
+/* Отступ между блоком «Спецификации» и блоком «Редактура» на мобиле —
+   по просьбе увеличен до 48px (стандартные 32px между text-group идут
+   через общий .case-section__text-group.case-section__text--group,
+   который используют и другие пары на странице, напр. «Подходы»/
+   «Выбранная стратегия» в 05 — их трогать не нужно, поэтому точечный
+   класс именно на этом блоке, а не общий брейкпоинт). Три класса —
+   выше специфичность общего правила (2 класса), выигрывает всегда. */
+@media (max-width:1100px){
+  .case-section__text-group.case-section__text--group.case-solution-editorial{ margin-top:48px; }
+}
+
 /* ---------- Результаты: экраны на подложке-сетке (06, только Fortis DS) ----------
+   Вся секция 06 — тинтованная (case-block--tint, лиловый EEF0F7 из
+   --case-tint-bg), включая текст «Итог/Дальнейшее развитие» над скринами —
+   не только обёртка галереи. Пунктирная сетка (готовый файл от Татьяны)
+   лежит ПОВЕРХ этого лилового фона и начинается только там, где начинаются
+   скрины (сама SVG прозрачная, без своего fill) — поэтому у галереи нет
+   собственного background-color, только background-image.
    В отличие от остальных картинок страницы (.case-section__media, колонки
    5/12–12/12, выровнены по левому краю текстовых колонок), тут скрины
-   центрируются на всю ширину блока и не тянутся до правого края — поэтому
-   не набор .case-shot впритык друг к другу, а обёртка-подложка с своим
-   фоном (лиловый EEF0F7 + пунктирная сетка, готовый файл от Татьяны) и
-   flex-колонкой, центрирующей каждый скрин по отдельности.
+   центрируются и не тянутся до правого края — поэтому не набор .case-shot
+   впритык друг к другу, а обёртка-подложка с flex-колонкой, центрирующей
+   каждый скрин по отдельности.
    .case-section__media тут оставлен для наследования отступа сверху от
    текста (см. div.case-section__media{margin-top:40px} выше по файлу) —
    grid-column переопределяем через составной селектор (выше специфичность),
    как и у .case-stats.case-section__media. */
+/* Подложка выходит за край контейнера на всю ширину вьюпорта — тот же
+   приём, что и у .case-hero__media (100vw + отрицательный margin).
+   Работает и внутри грида: grid-column:1/-1 растягивает area на всю
+   (центрированную) ширину .container, поэтому центр area совпадает
+   с центром вьюпорта — расчёт 50%-50vw остаётся верным. */
 .case-results__gallery.case-section__media{ grid-column:1 / -1; }
 .case-results__gallery{
   display:flex;
   flex-direction:column;
   align-items:center;
   gap:40px;
-  padding:64px 24px;
-  border-radius:8px;
-  background:#EEF0F7 url("/images/ru/cases/fortis-ds/results-grid-bg.svg") top center/1440px auto repeat;
+  padding:64px 0;
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  background:url("/images/ru/cases/fortis-ds/results-grid-bg.svg") top center/1440px auto repeat;
 }
 .case-results__shot{ margin:0; }
+.case-results__shot--full{ width:100%; max-width:none; } /* карточки UI-kit'а — в край подложки, без отступа */
 .case-results__shot--wide{ width:100%; max-width:1040px; }
 .case-results__shot--narrow{ width:100%; max-width:640px; }
 .case-results__shot + .case-results__shot{ margin-top:0; } /* сбрасываем общий .case-shot+.case-shot:40px — здесь отступ уже даёт gap родителя */
 
-@media (max-width:900px){
-  .case-results__gallery{ padding:32px 16px; gap:24px; }
+@media (max-width:1100px){
+  .case-results__gallery{ padding:32px 0; gap:24px; }
+  .case-results__shot--wide,
+  .case-results__shot--narrow{ padding-inline:16px; }
 }

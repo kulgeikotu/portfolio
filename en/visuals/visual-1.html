@@ -3,19 +3,44 @@
 <head>
   {{> head-meta }}
   {{> head-analytics }}
+  <script type="module" src="/src/js/main.js"></script>
 </head>
-<body>
-  {{> header }}
-  {{> mobile-menu }}
+<body class="visual-page visual-page--dark">
+  {{> visual-nav current=1 }}
 
-  <main id="top">
-    <section class="case-page container">
-      <h1 class="hero-title">Visual 1</h1>
-      <p class="hero-text">Страница в разработке / Page in progress.</p>
+  <main class="visual-main">
+    <section class="visual-hero container">
+      <h1 class="visual-hero__title reveal">Mood<br>tracker</h1>
+      <figure class="visual-shot reveal reveal--fade" style="--shot-ratio:2553/2556; --shot-ratio-mobile:2505/2556">
+        <picture>
+          <source media="(max-width:900px)" srcset="/images/shared/visuals/visual-1/hero-mobile.webp">
+          <img src="/images/shared/visuals/visual-1/hero-desktop.webp" alt="Main weekly mood diary screen and the «Alice's mood» card broken down by anxiety, calm and sadness" width="2553" height="2556" fetchpriority="high" loading="eager" decoding="async">
+        </picture>
+      </figure>
+    </section>
+
+    <section class="visual-section visual-wide container">
+      <h2 class="visual-section__title reveal reveal--fade">Adding an emotion</h2>
+      <figure class="visual-shot reveal reveal--fade" style="--shot-ratio:8034/2556; --shot-ratio-mobile:3720/5160">
+        <picture>
+          <source media="(max-width:900px)" srcset="/images/shared/visuals/visual-1/emotions-mobile.webp">
+          <img src="/images/shared/visuals/visual-1/emotions-desktop.webp" alt="Adding an emotion flow: empty diary, choosing an emotion, adjusting its intensity with a swipe, the finished entry" width="8034" height="2556" loading="lazy" decoding="async">
+        </picture>
+      </figure>
+    </section>
+
+    <section class="visual-section container">
+      <h2 class="visual-section__title reveal reveal--fade">Light theme</h2>
+      <figure class="visual-shot reveal reveal--fade" style="--shot-ratio:3921/2556; --shot-ratio-mobile:3633/2556">
+        <picture>
+          <source media="(max-width:900px)" srcset="/images/shared/visuals/visual-1/light-theme-mobile.webp">
+          <img src="/images/shared/visuals/visual-1/light-theme-desktop.webp" alt="Mood tracker in light theme: weekly diary and the «Alice's mood» card" width="3921" height="2556" loading="lazy" decoding="async">
+        </picture>
+      </figure>
     </section>
   </main>
 
-  {{> footer }}
-  <script type="module" src="/src/js/main.js"></script>
+  {{> visual-footer current=1 prev=5 next=2 }}
+
 </body>
 </html>

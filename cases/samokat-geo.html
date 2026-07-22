@@ -3,6 +3,7 @@
 <head>
   {{> head-meta }}
   {{> head-analytics }}
+  <script type="module" src="/src/js/main.js"></script>
 </head>
 <body>
   {{> case-header currentCaseId="samokat-geo" }}
@@ -21,7 +22,7 @@
 
       <div class="case-hero__media reveal reveal--fade">
         <picture>
-          <source media="(max-width:900px)" srcset="/images/ru/cases/samokat-geo/hero-mobile.webp">
+          <source media="(max-width:1100px)" srcset="/images/ru/cases/samokat-geo/hero-mobile.webp">
           <img src="/images/ru/cases/samokat-geo/hero-desktop.webp"
                alt="Ноутбук с экраном конструктора акций, рядом фигурка курьера-велосипедиста и чашка кофе"
                width="2880" height="1380" fetchpriority="high" loading="eager" decoding="async">
@@ -121,7 +122,7 @@
 
         <figure class="case-shot case-section__media case-quote reveal reveal--fade">
           <picture>
-            <source media="(max-width:900px)" srcset="/images/ru/cases/samokat-geo/quote-mobile.svg">
+            <source media="(max-width:1100px)" srcset="/images/ru/cases/samokat-geo/quote-mobile.svg">
             <img src="/images/ru/cases/samokat-geo/quote.svg" alt="Я перевела задачу с «добавить чекбокс» на: упростить настройку географии под новый сценарий «акция на весь город»." width="925" height="176">
           </picture>
         </figure>
@@ -260,6 +261,5 @@
 
   {{> case-footer currentCaseId="samokat-geo" }}
 
-  <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>

@@ -75,7 +75,7 @@
   width:100%;
   max-width:688px;
   aspect-ratio:688 / 394;
-  border-radius:2px;
+  border-radius:4px;
   overflow:hidden;
   background:var(--case-accent, var(--color-photo-bg));
   margin-top:12px;

@@ -1,0 +1,13 @@
+{{!-- Верхняя навигация страниц визуалов — 5 точек-переключателей.
+    current (1-5, число) — какой визуал открыт сейчас, передаётся при
+    подключении: {{> visual-nav current=1 }}. Прозрачная+блюр подложка,
+    цвет самих точек берётся из темы (.visual-page--dark/--light, см. visual.css). --}}
+<nav class="visual-nav" aria-label="{{ t.[nav.visuals] }}">
+  <div class="visual-dots">
+    <a class="visual-dots__dot{{#if (eq current 1)}} is-active{{/if}}" href="{{ base }}{{#if (eq lang 'en')}}/en{{/if}}/visuals/visual-1.html" aria-label="{{ t.[visualNav.goTo] }} 1"{{#if (eq current 1)}} aria-current="page"{{/if}}></a>
+    <a class="visual-dots__dot{{#if (eq current 2)}} is-active{{/if}}" href="{{ base }}{{#if (eq lang 'en')}}/en{{/if}}/visuals/visual-2.html" aria-label="{{ t.[visualNav.goTo] }} 2"{{#if (eq current 2)}} aria-current="page"{{/if}}></a>
+    <a class="visual-dots__dot{{#if (eq current 3)}} is-active{{/if}}" href="{{ base }}{{#if (eq lang 'en')}}/en{{/if}}/visuals/visual-3.html" aria-label="{{ t.[visualNav.goTo] }} 3"{{#if (eq current 3)}} aria-current="page"{{/if}}></a>
+    <a class="visual-dots__dot{{#if (eq current 4)}} is-active{{/if}}" href="{{ base }}{{#if (eq lang 'en')}}/en{{/if}}/visuals/visual-4.html" aria-label="{{ t.[visualNav.goTo] }} 4"{{#if (eq current 4)}} aria-current="page"{{/if}}></a>
+    <a class="visual-dots__dot{{#if (eq current 5)}} is-active{{/if}}" href="{{ base }}{{#if (eq lang 'en')}}/en{{/if}}/visuals/visual-5.html" aria-label="{{ t.[visualNav.goTo] }} 5"{{#if (eq current 5)}} aria-current="page"{{/if}}></a>
+  </div>
+</nav>

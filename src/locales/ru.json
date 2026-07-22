@@ -14,6 +14,11 @@
   "caseHeader.back": "Назад",
   "caseHeader.homeHref": "/",
 
+  "visualNav.close": "Закрыть",
+  "visualNav.prev": "Предыдущий визуал",
+  "visualNav.next": "Следующий визуал",
+  "visualNav.goTo": "Визуал",
+
   "otherCases.title": "Другие кейсы",
 
   "logo.name": "ТАТЬЯНА КУЛЬГЕЙКО",

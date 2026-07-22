@@ -10,6 +10,7 @@
   justify-content:center;
   height:48px;
   padding-inline:24px;
+  border-radius:4px;
   font-family:var(--font-body);
   font-size:1.125rem;
   line-height:24px;

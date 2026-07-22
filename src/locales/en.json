@@ -14,6 +14,11 @@
   "caseHeader.back": "Back",
   "caseHeader.homeHref": "/en/",
 
+  "visualNav.close": "Close",
+  "visualNav.prev": "Previous visual",
+  "visualNav.next": "Next visual",
+  "visualNav.goTo": "Visual",
+
   "otherCases.title": "Other cases",
 
   "logo.name": "TATIANA KULGEIKO",

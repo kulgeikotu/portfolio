@@ -1,4 +1,262 @@
 /* =====================================================
-   Общий стиль страниц визуалов — заготовка
+   VISUAL PAGES — «Трекер настроения» и остальные визуалы.
+   Свой хедер/футер (точки сверху, стрелки+крестик снизу), а не
+   сайтовый header/footer — оба зафиксированы к верху/низу экрана,
+   прозрачные с блюром, .visual-page целиком тёмная (21201F) или
+   светлая (F7F1EB), задаётся модификатором на <body>.
    ===================================================== */
-.visual-page{ padding-block:48px 96px; }
+
+/* ---------- Тема (тёмная/светлая) ----------
+   Иконки/точки — через currentColor, поэтому один и тот же партиал
+   nav/footer автоматически красится под тему без доп. вариантов. */
+.visual-page{
+  min-height:100dvh;
+}
+.visual-page--dark{
+  background:#21201F;
+  color:#ffffff;
+}
+.visual-page--light{
+  background:#F7F1EB;
+  color:var(--color-ink);
+}
+
+.visual-page--dark .visual-nav,
+.visual-page--dark .visual-footer{
+  --visual-nav-bg: rgba(23, 23, 22, 0.02);
+  --visual-icon: #ffffff;
+  --visual-icon-hover: #5C82FF;
+}
+.visual-page--light .visual-nav,
+.visual-page--light .visual-footer{
+  --visual-nav-bg: rgba(255, 255, 255, 0.02);
+  --visual-icon: #21201F;
+  --visual-icon-hover: #2A28A8;
+}
+
+/* ---------- Верхняя навигация — точки ---------- */
+.visual-nav{
+  position:fixed;
+  inset-inline:0;
+  top:0;
+  z-index:100;
+  height:var(--header-h); /* 72px, как и у сайтового хедера */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--visual-nav-bg);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+
+.visual-dots{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.visual-dots__dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--visual-icon);
+  opacity:.35;
+  transition:opacity .2s ease, transform .2s ease;
+}
+.visual-dots__dot:hover{ opacity:.7; }
+.visual-dots__dot.is-active{
+  opacity:1;
+  transform:scale(1.25);
+}
+
+/* ---------- Нижняя навигация — стрелки + крестик ---------- */
+.visual-footer{
+  position:fixed;
+  inset-inline:0;
+  bottom:0;
+  z-index:100;
+  height:var(--header-h);
+  background:var(--visual-nav-bg);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.visual-footer__inner{
+  height:100%;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  padding-inline:var(--container-pad);
+}
+
+.visual-footer__arrow,
+.visual-footer__close{
+  display:inline-flex;
+  color:var(--visual-icon);
+  transition:color .2s ease;
+}
+.visual-footer__arrow svg,
+.visual-footer__close svg{ width:24px; height:24px; }
+.visual-footer__arrow:hover,
+.visual-footer__close:hover{ color:var(--visual-icon-hover); }
+
+.visual-footer__arrow--prev{ justify-self:start; }
+.visual-footer__close{ justify-self:center; }
+.visual-footer__arrow--next{ justify-self:end; }
+
+/* ---------- Контент ----------
+   Скриншоты — уже готовые композиции (напр. лента из 6 экранов), а не
+   элементы на всю ширину сайтового .container (1440) — иначе разъезжаются
+   гигантскими. Держим их в более узкой колонке. */
+.visual-main{
+  /* сверху — так, чтобы от края экрана до текста заголовка было ~200px
+     (сама верхняя точка блока не совпадает с видимым текстом — у шрифта
+     есть свой internal leading, поэтому паддинг чуть меньше 200) */
+  padding-block-start:150px;
+  padding-block-end:calc(var(--header-h) + 32px);
+}
+
+.visual-hero,
+.visual-section{
+  max-width:960px;
+  margin-inline:auto;
+}
+
+.visual-hero{
+  padding-block-end:96px;
+}
+.visual-hero__title{
+  margin:0 0 32px;
+  font-family:var(--font-display);
+  font-size:var(--fs-h1);
+  font-weight:500;
+  line-height:1;
+  letter-spacing:var(--ls-h1);
+  color:currentColor;
+  text-align:center;
+}
+/* Пара экранов в hero — контейнер держит всю строку скриншотов
+   (напр. ленту из 6), но сама hero-пара смотрится крупнее остальных
+   рядов, поэтому её дополнительно сужаем и центрируем. */
+.visual-hero .visual-shot{
+  max-width:640px;
+  margin-inline:auto;
+}
+/* Визуалы 3/4 (десктопные скриншоты) — на 20% крупнее дефолтной hero-пары,
+   640px оказались слишком мелкими под их пропорции. */
+.visual-hero--lg .visual-shot{
+  max-width:768px;
+}
+
+/* Несколько скриншотов друг под другом внутри одной секции (напр.
+   пара экранов «Умного дома» или светлая/тёмная версия десктопного
+   интерфейса) — без отдельных подзаголовков на каждый. */
+.visual-shot-stack{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.visual-section{
+  padding-block:96px;
+}
+/* «На всю ширину» — для лент/десктопных скриншотов, задуманных на всю
+   ширину страницы (с обычными боковыми полями сайта), а не в узкой
+   колонке 960px. Может стоять и на .visual-hero, и на .visual-section. */
+.visual-wide{
+  max-width:var(--container-max);
+}
+.visual-wide .visual-shot{
+  max-width:none;
+}
+.visual-section__title{
+  margin:0 0 32px;
+  font-family:var(--font-display);
+  font-size:40px;
+  font-weight:500;
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  color:currentColor;
+  text-align:center;
+}
+
+/* Реальный скриншот интерфейса — соотношение сторон разное у десктопной
+   и мобильной версии (мобильная не просто кроп, а другая раскладка,
+   напр. лента из 6 экранов на десктопе -> сетка 2×3 на мобиле), поэтому
+   тот же приём, что и у .case-hero__media: aspect-ratio переменной на
+   фигуре, своя пара --shot-ratio/--shot-ratio-mobile на каждой картинке. */
+.visual-shot{
+  margin:0;
+  position:relative; /* якорь для .dotmatrix-loader (image-loader.js) */
+}
+.visual-shot img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:4px;
+  aspect-ratio:var(--shot-ratio);
+  object-fit:cover;
+}
+@media (max-width:900px){
+  .visual-shot img{ aspect-ratio:var(--shot-ratio-mobile, var(--shot-ratio)); }
+}
+
+/* Заглушки на месте скриншотов интерфейса — тот же приём, что
+   .case-shot__placeholder/.media-placeholder (серый блок-заглушка
+   до появления реальных ассетов), но адаптирован под тёмную и
+   светлую тему визуалов через currentColor/opacity. Пока используется
+   только на пустых визуалах (2-5) — на визуале 1 уже реальные скриншоты. */
+.visual-shot-row{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:16px;
+}
+.visual-shot__placeholder{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  aspect-ratio:375/812;
+  border-radius:4px;
+  background:color-mix(in srgb, currentColor 8%, transparent);
+  font-family:var(--font-body);
+  font-size:14px;
+  line-height:1.4;
+  text-align:center;
+  color:color-mix(in srgb, currentColor 45%, transparent);
+  padding:16px;
+  box-sizing:border-box;
+}
+
+.visual-shot-row--hero .visual-shot__placeholder{ width:min(320px, 42vw); }
+.visual-shot-row--thumbs .visual-shot__placeholder{ width:min(140px, 26vw); }
+.visual-shot-row--mid .visual-shot__placeholder{ width:min(220px, 32vw); }
+
+/* Пустые страницы (визуалы без контента ещё) */
+.visual-empty{
+  min-height:calc(100dvh - 2 * var(--header-h));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.visual-empty__text{
+  margin:0;
+  font-family:var(--font-body);
+  font-size:1rem;
+  color:color-mix(in srgb, currentColor 55%, transparent);
+}
+
+@media (max-width:900px){
+  .visual-hero{ padding-block-end:64px; }
+  .visual-hero__title{
+    margin-bottom:24px;
+    font-size:32px;
+  }
+  .visual-section{ padding-block:64px; }
+  .visual-section__title{
+    margin-bottom:24px;
+    font-size:24px;
+  }
+  .visual-shot-row--hero .visual-shot__placeholder{ width:min(220px, 60vw); }
+  .visual-shot-row--thumbs .visual-shot__placeholder{ width:min(100px, 40vw); }
+  .visual-shot-row--mid .visual-shot__placeholder{ width:min(160px, 48vw); }
+}

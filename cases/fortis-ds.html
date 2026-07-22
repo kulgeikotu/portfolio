@@ -3,6 +3,7 @@
 <head>
   {{> head-meta }}
   {{> head-analytics }}
+  <script type="module" src="/src/js/main.js"></script>
 </head>
 <body>
   {{> case-header currentCaseId="fortis-ds" }}
@@ -27,7 +28,7 @@
 
       <div class="case-hero__media reveal reveal--fade">
         <picture>
-          <source media="(max-width:900px)" srcset="/images/ru/cases/fortis-ds/hero-mobile.webp">
+          <source media="(max-width:1100px)" srcset="/images/ru/cases/fortis-ds/hero-mobile.webp">
           <img src="/images/ru/cases/fortis-ds/hero-desktop.webp"
                alt="Экран «Найти груз» с пометками «Разработчик» и «Дизайнер» на карточках и кнопке поиска"
                width="4320" height="1929" fetchpriority="high" loading="eager" decoding="async">
@@ -62,7 +63,7 @@
 
         <figure class="case-shot case-section__media">
           <picture>
-            <source media="(max-width:900px)" srcset="/images/ru/cases/fortis-ds/context-old-ui-mobile.webp">
+            <source media="(max-width:1100px)" srcset="/images/ru/cases/fortis-ds/context-old-ui-mobile.webp">
             <img src="/images/ru/cases/fortis-ds/context-old-ui.webp" alt="Экраны «Мои перевозки» на старой дизайн-системе — десктоп и мобильная версия" width="1848" height="1016" loading="lazy" decoding="async">
           </picture>
           <figcaption>Экраны на старой дизайн-системе</figcaption>
@@ -129,7 +130,7 @@
 
         <figure class="case-flow case-section__media">
           <picture>
-            <source media="(max-width:900px)" srcset="/images/ru/cases/fortis-ds/solution-architecture-mobile.svg">
+            <source media="(max-width:1100px)" srcset="/images/ru/cases/fortis-ds/solution-architecture-mobile.svg">
             <img src="/images/ru/cases/fortis-ds/solution-architecture.svg" alt="UI-kit для дизайна (Figma), документация и гайдлайны, Storybook для синхронизации с разработкой, библиотека NPM-компонентов" width="925" height="256" loading="lazy" decoding="async">
           </picture>
           <figcaption>Архитектура системы</figcaption>
@@ -159,7 +160,7 @@
           <h3 class="case-section__group-heading">Организация файлов UI-kit'а</h3>
           <figure class="case-flow">
             <picture>
-              <source media="(max-width:900px)" srcset="/images/ru/cases/fortis-ds/solution-file-structure-mobile.svg">
+              <source media="(max-width:1100px)" srcset="/images/ru/cases/fortis-ds/solution-file-structure-mobile.svg">
               <img src="/images/ru/cases/fortis-ds/solution-file-structure.svg" alt="Общие библиотеки (лого, цвета, иллюстрации, иконки, цвета иллюстраций) и отдельные библиотеки типографики и компонентов для Web и Android" width="923" height="481" loading="lazy" decoding="async">
             </picture>
           </figure>
@@ -169,7 +170,7 @@
           <div class="case-section__text-group-columns">
             <figure class="case-shot">
               <picture>
-                <source media="(max-width:900px)" srcset="/images/ru/cases/fortis-ds/solution-spec-template-mobile.webp">
+                <source media="(max-width:1100px)" srcset="/images/ru/cases/fortis-ds/solution-spec-template-mobile.webp">
                 <img src="/images/ru/cases/fortis-ds/solution-spec-template.webp" alt="Шаблон описания компонента: базовое описание, когда используем, внешний вид, поведение, ошибки и валидации" width="1365" height="1218" loading="lazy" decoding="async">
               </picture>
             </figure>
@@ -180,11 +181,11 @@
           </div>
         </div>
 
-        <div class="case-section__text-group case-section__text--group">
+        <div class="case-section__text-group case-section__text--group case-solution-editorial">
           <div class="case-section__text-group-columns">
             <figure class="case-shot">
               <picture>
-                <source media="(max-width:900px)" srcset="/images/ru/cases/fortis-ds/solution-editorial-rules-mobile.webp">
+                <source media="(max-width:1100px)" srcset="/images/ru/cases/fortis-ds/solution-editorial-rules-mobile.webp">
                 <img src="/images/ru/cases/fortis-ds/solution-editorial-rules.webp" alt="Правила текстов и типографики: буква «Ё», тире и дефис, капс, кавычки, обращение «вы», названия сервисов и форматов файлов" width="1359" height="1002" loading="lazy" decoding="async">
               </picture>
             </figure>
@@ -206,7 +207,7 @@
 
         <figure class="case-flow case-section__media">
           <picture>
-            <source media="(max-width:900px)" srcset="/images/ru/cases/fortis-ds/rollout-approaches-mobile.svg">
+            <source media="(max-width:1100px)" srcset="/images/ru/cases/fortis-ds/rollout-approaches-mobile.svg">
             <img src="/images/ru/cases/fortis-ds/rollout-approaches.svg" alt="Схема: централизованный подход (одна команда создаёт компоненты) и федеративный подход (продуктовые команды создают компоненты сами)" width="920" height="242" loading="lazy" decoding="async">
           </picture>
         </figure>
@@ -250,7 +251,7 @@
       </div>
     </section>
 
-    <section id="results" class="case-block">
+    <section id="results" class="case-block case-block--tint">
       <div class="case-section container">
         <div class="case-section__label">
           <span class="case-section__number">06</span>
@@ -277,27 +278,27 @@
         </div>
 
         <div class="case-results__gallery case-section__media">
-          <figure class="case-shot case-results__shot case-results__shot--wide">
+          <figure class="case-shot case-results__shot case-results__shot--full">
             <picture>
-              <source media="(max-width:900px)" srcset="/images/ru/cases/fortis-ds/results-uikit-mobile.webp">
+              <source media="(max-width:1100px)" srcset="/images/ru/cases/fortis-ds/results-uikit-mobile.webp">
               <img src="/images/ru/cases/fortis-ds/results-uikit.webp" alt="Состояния кнопок Primary/Secondary/Ghost, поля ввода, чекбоксы и диапазон температурного режима из UI-kit'а" width="4320" height="996" loading="lazy" decoding="async">
             </picture>
           </figure>
           <figure class="case-shot case-results__shot case-results__shot--wide">
             <picture>
-              <source media="(max-width:900px)" srcset="/images/ru/cases/fortis-ds/results-search-screen-mobile.webp">
+              <source media="(max-width:1100px)" srcset="/images/ru/cases/fortis-ds/results-search-screen-mobile.webp">
               <img src="/images/ru/cases/fortis-ds/results-search-screen.webp" alt="Экран «Найти груз» на дизайн-системе" width="3201" height="2001" loading="lazy" decoding="async">
             </picture>
           </figure>
           <figure class="case-shot case-results__shot case-results__shot--narrow">
             <picture>
-              <source media="(max-width:900px)" srcset="/images/ru/cases/fortis-ds/results-mobile-pair-mobile.webp">
+              <source media="(max-width:1100px)" srcset="/images/ru/cases/fortis-ds/results-mobile-pair-mobile.webp">
               <img src="/images/ru/cases/fortis-ds/results-mobile-pair.webp" alt="Мобильные экраны «Найти груз» и «Грузы: размещение» на дизайн-системе" width="1941" height="2001" loading="lazy" decoding="async">
             </picture>
           </figure>
           <figure class="case-shot case-results__shot case-results__shot--wide">
             <picture>
-              <source media="(max-width:900px)" srcset="/images/ru/cases/fortis-ds/results-onboarding-mobile.webp">
+              <source media="(max-width:1100px)" srcset="/images/ru/cases/fortis-ds/results-onboarding-mobile.webp">
               <img src="/images/ru/cases/fortis-ds/results-onboarding.webp" alt="Онбординг-подсказка «Создание заявок» поверх экрана «Активные заявки»" width="3201" height="2001" loading="lazy" decoding="async">
             </picture>
           </figure>
@@ -331,6 +332,5 @@
 
   {{> case-footer currentCaseId="fortis-ds" }}
 
-  <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>

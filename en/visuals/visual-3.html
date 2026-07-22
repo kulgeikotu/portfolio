@@ -3,19 +3,26 @@
 <head>
   {{> head-meta }}
   {{> head-analytics }}
+  <script type="module" src="/src/js/main.js"></script>
 </head>
-<body>
-  {{> header }}
-  {{> mobile-menu }}
+<body class="visual-page visual-page--light">
+  {{> visual-nav current=3 }}
 
-  <main id="top">
-    <section class="case-page container">
-      <h1 class="hero-title">Visual 3</h1>
-      <p class="hero-text">Страница в разработке / Page in progress.</p>
+  <main class="visual-main">
+    <section class="visual-hero visual-hero--lg container">
+      <h1 class="visual-hero__title reveal">Meeting<br>calendar</h1>
+      <div class="visual-shot-stack">
+        <figure class="visual-shot reveal reveal--fade" style="--shot-ratio:4320/2880">
+          <img src="/images/shared/visuals/visual-3/calendar-light.webp" alt="Weekly meeting list in light theme: schedule on the left, events by day on the right" width="4320" height="2880" fetchpriority="high" loading="eager" decoding="async">
+        </figure>
+        <figure class="visual-shot reveal reveal--fade" data-delay="1" style="--shot-ratio:4320/2880">
+          <img src="/images/shared/visuals/visual-3/calendar-dark.webp" alt="The same meeting list in dark theme" width="4320" height="2880" loading="lazy" decoding="async">
+        </figure>
+      </div>
     </section>
   </main>
 
-  {{> footer }}
-  <script type="module" src="/src/js/main.js"></script>
+  {{> visual-footer current=3 prev=2 next=4 }}
+
 </body>
 </html>

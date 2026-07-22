@@ -5,6 +5,14 @@
 <title>{{ t.[meta.title] }}</title>
 <meta name="description" content="{{ t.[meta.description] }}">
 
+{{!-- Настоящий блокирующий <link>, а не только импорт стилей внутри
+    main.js — иначе (особенно на dev-сервере, где Vite подключает CSS
+    через JS) браузер успевает отрисовать неотстилизованный HTML первым
+    кадром: SVG-иконки без атрибутов width/height разворачиваются в
+    дефолтные 300×150, мобильное меню на секунду видно на весь экран.
+    С этим <link> в <head> стили гарантированно блокируют отрисовку. --}}
+<link rel="stylesheet" href="/src/styles/main.css">
+
 {{! favicon и иконки }}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="any">

@@ -3,6 +3,7 @@
 <head>
   {{> head-meta }}
   {{> head-analytics }}
+  <script type="module" src="/src/js/main.js"></script>
 </head>
 <body>
   {{> case-header currentCaseId="beeline-crm" }}
@@ -27,7 +28,7 @@
 
       <div class="case-hero__media reveal reveal--fade">
         <picture>
-          <source media="(max-width:900px)" srcset="/images/ru/cases/beeline-crm/hero-mobile.webp">
+          <source media="(max-width:1100px)" srcset="/images/ru/cases/beeline-crm/hero-mobile.webp">
           <img src="/images/ru/cases/beeline-crm/hero-desktop.webp"
                alt="Монитор с экраном CRM, рядом гарнитура оператора колл-центра"
                width="2880" height="1550" fetchpriority="high" loading="eager" decoding="async">
@@ -294,6 +295,5 @@
 
   {{> case-footer currentCaseId="beeline-crm" }}
 
-  <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>

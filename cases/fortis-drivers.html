@@ -3,6 +3,7 @@
 <head>
   {{> head-meta }}
   {{> head-analytics }}
+  <script type="module" src="/src/js/main.js"></script>
 </head>
 <body>
   {{> case-header currentCaseId="fortis-drivers" }}
@@ -27,7 +28,7 @@
 
       <div class="case-hero__media reveal reveal--fade">
         <picture>
-          <source media="(max-width:900px)" srcset="/images/ru/cases/fortis-drivers/hero-mobile.webp">
+          <source media="(max-width:1100px)" srcset="/images/ru/cases/fortis-drivers/hero-mobile.webp">
           <img src="/images/ru/cases/fortis-drivers/hero-desktop.webp"
                alt="Фура на трассе, на переднем плане телефон с экраном «Перевозки»"
                width="2880" height="1548" fetchpriority="high" loading="eager" decoding="async">
@@ -54,7 +55,7 @@
 
         <figure class="case-flow case-section__media">
           <picture>
-            <source media="(max-width:900px)" srcset="/images/ru/cases/fortis-drivers/context-metrics-mobile.svg">
+            <source media="(max-width:1100px)" srcset="/images/ru/cases/fortis-drivers/context-metrics-mobile.svg">
             <img src="/images/ru/cases/fortis-drivers/context-metrics.svg" alt="Метрик влияния: доля ручной координации водителей, NPS водителей" width="922" height="164" loading="lazy" decoding="async">
           </picture>
         </figure>
@@ -97,7 +98,7 @@
 
         <figure class="case-flow case-section__media">
           <picture>
-            <source media="(max-width:900px)" srcset="/images/ru/cases/fortis-drivers/mvp-scope-mobile.svg">
+            <source media="(max-width:1100px)" srcset="/images/ru/cases/fortis-drivers/mvp-scope-mobile.svg">
             <img src="/images/ru/cases/fortis-drivers/mvp-scope.svg" alt="Состав MVP: принятие и отмена заявки, отметки прибытия/убытия, уведомления по заявкам, история заявки — в MVP; помощь и связь с поддержкой, финансовые отчеты, поиск заявок на перевозку — вне MVP" width="921" height="472" loading="lazy" decoding="async">
           </picture>
         </figure>
@@ -247,7 +248,7 @@
 
         <figure class="case-shot case-section__media case-results__media">
           <picture>
-            <source media="(max-width:900px)" srcset="/images/ru/cases/fortis-drivers/results-screens-mobile.webp">
+            <source media="(max-width:1100px)" srcset="/images/ru/cases/fortis-drivers/results-screens-mobile.webp">
             <img src="/images/ru/cases/fortis-drivers/results-screens.webp" alt="Три экрана: приветствие водителя, список «Перевозки», подтверждение «Рейс по заявке выполнен»" width="4032" height="2556" loading="lazy" decoding="async">
           </picture>
         </figure>
@@ -276,6 +277,5 @@
 
   {{> case-footer currentCaseId="fortis-drivers" }}
 
-  <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>

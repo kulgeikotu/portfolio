@@ -3,19 +3,26 @@
 <head>
   {{> head-meta }}
   {{> head-analytics }}
+  <script type="module" src="/src/js/main.js"></script>
 </head>
-<body>
-  {{> header }}
-  {{> mobile-menu }}
+<body class="visual-page visual-page--light">
+  {{> visual-nav current=4 }}
 
-  <main id="top">
-    <section class="case-page container">
-      <h1 class="hero-title">Visual 4</h1>
-      <p class="hero-text">Страница в разработке / Page in progress.</p>
+  <main class="visual-main">
+    <section class="visual-hero visual-hero--lg container">
+      <h1 class="visual-hero__title reveal">Meeting<br>analytics</h1>
+      <div class="visual-shot-stack">
+        <figure class="visual-shot reveal reveal--fade" style="--shot-ratio:4320/2754">
+          <img src="/images/shared/visuals/visual-4/analytics-overview.webp" alt="Analytics section: created, completed, rescheduled and canceled meetings, trend charts and duration breakdown" width="4320" height="2754" fetchpriority="high" loading="eager" decoding="async">
+        </figure>
+        <figure class="visual-shot reveal reveal--fade" data-delay="1" style="--shot-ratio:4320/2754">
+          <img src="/images/shared/visuals/visual-4/analytics-details.webp" alt="Section continued: popular meeting times and types, users with the most and least meetings" width="4320" height="2754" loading="lazy" decoding="async">
+        </figure>
+      </div>
     </section>
   </main>
 
-  {{> footer }}
-  <script type="module" src="/src/js/main.js"></script>
+  {{> visual-footer current=4 prev=3 next=5 }}
+
 </body>
 </html>
