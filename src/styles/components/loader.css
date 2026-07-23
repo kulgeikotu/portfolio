@@ -1,12 +1,10 @@
 /* =====================================================
-   DOT-MATRIX LOADER — индикатор загрузки картинок.
-   Идея — с dotmatrix.zzzzshawn.cloud (5×5 точек, спиральная волна
-   от края к центру), переписана на ванильном CSS/JS: у сайта нет
-   React/Tailwind, поэтому оригинальный shadcn-компонент не встраивался
-   напрямую. Точки вставляет src/js/image-loader.js, порядок волны —
-   через --dmx-order (0…24) на каждой точке.
+   LOGO LOADER — индикатор загрузки картинок: логотип-астериск
+   (тот же, что в хедере/фавиконе), крутится на месте, пока картинка
+   не загрузится. Серый (#908F8F) на белом фоне (var(--color-bg)) —
+   вставляет src/js/image-loader.js.
    ===================================================== */
-.dotmatrix-loader{
+.logo-loader{
   position:absolute;
   inset:0;
   z-index:1;
@@ -16,33 +14,24 @@
   background:var(--color-bg);
   transition:opacity .3s ease;
 }
-.dotmatrix-loader.is-hidden{
+.logo-loader.is-hidden{
   opacity:0;
   pointer-events:none;
 }
-.dotmatrix-loader__grid{
-  display:grid;
-  grid-template-columns:repeat(5, 6px);
-  grid-template-rows:repeat(5, 6px);
-  gap:3px;
+.logo-loader__icon{
+  width:32px;
+  height:32px;
+  color:#908F8F;
+  animation:logo-loader-spin 1.4s linear infinite;
 }
-.dotmatrix-loader__dot{
-  width:6px;
-  height:6px;
-  background:var(--color-ink);
-  opacity:0.15;
-  animation:dmx-pulse 1.35s ease-in-out infinite;
-  animation-delay:calc(var(--dmx-order, 0) * 0.045s);
-}
-@keyframes dmx-pulse{
-  0%, 100%{ opacity:0.15; }
-  35%{ opacity:1; }
+@keyframes logo-loader-spin{
+  to{ transform:rotate(360deg); }
 }
 @media (prefers-reduced-motion: reduce){
-  .dotmatrix-loader__dot{ animation:none; opacity:0.4; }
+  .logo-loader__icon{ animation:none; }
 }
 
 /* Скругление у оверлея — как у самой картинки в этом контексте, иначе
    квадратные углы лоадера торчат из-под скруглённого фото/скриншота. */
-.case-shot .dotmatrix-loader{ border-radius:8px; }
-.case-flow .dotmatrix-loader{ border-radius:8px; }
+.case-shot .logo-loader{ border-radius:8px; }
+.case-flow .logo-loader{ border-radius:8px; }

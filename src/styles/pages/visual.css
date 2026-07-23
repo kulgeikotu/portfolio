@@ -13,7 +13,10 @@
   min-height:100dvh;
 }
 .visual-page--dark{
-  background:#21201F;
+  /* --visual-page-bg — переопределяется инлайн на <body> только у визуала 5
+     («Бронирование экскурсий», 2F2B27 вместо стандартного 21201F — тёмный
+     фон был слишком тёмным на фоне светлых скриншотов, плохо считывался) */
+  background:var(--visual-page-bg, #21201F);
   color:#ffffff;
 }
 .visual-page--light{
@@ -185,7 +188,7 @@
    фигуре, своя пара --shot-ratio/--shot-ratio-mobile на каждой картинке. */
 .visual-shot{
   margin:0;
-  position:relative; /* якорь для .dotmatrix-loader (image-loader.js) */
+  position:relative; /* якорь для .logo-loader (image-loader.js) */
 }
 .visual-shot img{
   width:100%;

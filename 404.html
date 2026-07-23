@@ -5,15 +5,11 @@
   <script type="module" src="/src/js/main.js"></script>
 </head>
 <body>
-  {{> header }}
-  {{> mobile-menu }}
-
-  <main id="top">
-    <section class="case-page container">
-      <h1 class="hero-title">404</h1>
-      <p class="hero-text">Такой страницы нет. <a href="{{ base }}/" style="color:var(--color-accent)">На главную →</a></p>
-    </section>
+  <main id="top" class="error-page">
+    <div class="error-page__content">
+      <h1 class="hero-title error-page__code">Такой страницы нет</h1>
+      <a class="btn btn--solid" href="{{ base }}/">На главную</a>
+    </div>
   </main>
-
 </body>
 </html>

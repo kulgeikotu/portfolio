@@ -24,5 +24,6 @@
 
 @import "./pages/case.css";
 @import "./pages/visual.css";
+@import "./pages/error.css";
 
 @import "./animations.css";

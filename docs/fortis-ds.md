@@ -24,7 +24,7 @@
 
 **01 Контекст и проблема** — A: «Контекст» + текст. B: «Проблема» + текст +
 список проблем Material UI. Медиа: `.case-shot` — экраны на старой дизайн-системе
-(`context-old-ui.webp`).
+(`context-old-ui.webp`, мобильный кроп — `context-old-ui-mobile.webp`).
 
 **02 Задача и команда** — A: «Задача». B: «Команда». Без медиа.
 
@@ -32,17 +32,31 @@
 список (`--row1`). `.case-section__anchor--bottom` → `#results` (секция 06).
 
 **04 Решение** — медиа СНАЧАЛА: `.case-flow` — архитектура системы
-(`solution-architecture.svg`). Затем A: «Прошлый опыт» + список. B: «UI-kit» +
-список. Дальше `.case-section__text-group` «Организация файлов UI-kit'а» с
-`.case-flow` внутри (`solution-file-structure.svg`). Затем **два парных блока
-картинка+текст** через `.case-section__text-group-columns`: «Спецификации»
-(`.case-shot` `solution-spec-template.webp` + текст) и «Редактура» (`.case-shot`
+(`solution-architecture.svg`, мобильный кроп — отдельный, более высокого
+разрешения файл `solution-architecture-mobile.svg`). Затем A: «Прошлый опыт»
++ список. B: «UI-kit» + список. Дальше `.case-section__text-group`
+«Организация файлов UI-kit'а» с `.case-flow` внутри (`solution-file-structure.svg`
+на десктопе). Затем **два парных блока картинка+текст** через
+`.case-section__text-group-columns`: «Спецификации» (`.case-shot`
+`solution-spec-template.webp` + текст) и «Редактура» (`.case-shot`
 `solution-editorial-rules.webp` + текст, обёрнута в доп. класс
 `.case-solution-editorial` — только на мобиле увеличивает отступ до блока
 «Спецификации» до 48px, точечно, чтобы не тронуть другие такие же пары на
 странице).
 
-**05 Внедрение** — медиа сначала: `.case-flow` (`rollout-approaches.svg`).
+Мобильный кроп «Организации файлов» — **не svg**, а `solution-file-structure-mobile.webp`
+(растровая картинка, формат отличается от десктопной версии — так и должно
+быть, замену свели на мобильном источнике `<picture><source>`, десктопный
+`.svg` не трогали). Эта картинка уже содержит заголовок «Организация файлов
+UI-kit'а» нарисованным внутри себя, поэтому HTML-заголовок `<h3
+class="case-section__group-heading">` рядом с ней получил доп. класс
+`case-section__group-heading--mobile-hidden` (`display:none` только на
+мобиле, в `case.css`) — иначе заголовок дублировался бы. На десктопе
+HTML-заголовок остаётся видимым как обычно.
+
+**05 Внедрение** — медиа сначала: `.case-flow` (`rollout-approaches.svg`,
+мобильный кроп — `rollout-approaches-mobile.svg`, чистый вектор без
+встроенного растра, в отличие от прежней версии).
 Затем два `.case-section__text-group`: «Подходы» (текст+текст) и «Выбранная
 стратегия» (текст+текст, `--group`).
 

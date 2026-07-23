@@ -100,7 +100,7 @@
 
 /* картинка вырывается из .container на всю ширину вьюпорта */
 .case-hero__media{
-  position:relative; /* якорь для .dotmatrix-loader (image-loader.js) */
+  position:relative; /* якорь для .logo-loader (image-loader.js) */
   width:100vw;
   margin-left:calc(50% - 50vw);
   margin-right:calc(50% - 50vw);
@@ -345,6 +345,17 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
   .case-section__text--a,
   .case-section__text--b{ grid-column:5 / span 8; }
   .case-section__text--b{ margin-top:16px; }
+  /* только «Проблема» в CRM (01 Контекст и задача) — точечно увеличили
+     отступ от «Продукта» до 32px, не трогая общее правило выше (16px),
+     от которого зависят остальные пары колонок на всех страницах кейсов.
+     Специфичность в 3 класса — иначе перебивает более специфичное
+     .case-section__text + .case-section__text (2 класса) ниже по файлу */
+  .case-section__text.case-section__text--b.case-section__text--gap32{ margin-top:32px; }
+  /* только «Организация файлов UI-kit'а» в fortis-ds — заголовок уже
+     нарисован внутри мобильной картинки (solution-file-structure-mobile.webp),
+     дублировать текстовым h3 не нужно; на десктопе h3 остаётся (там своя
+     десктопная картинка без заголовка внутри) */
+  .case-section__group-heading--mobile-hidden{ display:none; }
   /* Задача: первый абзац после картинки идёт не за другим абзацем, а
      за картинкой — ему нужен отступ «от картинки» (32px), а не «между
      абзацами» (16px, которое досталось бы ему от правила для --b выше) */
@@ -401,7 +412,7 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
 
 /* ---------- Flow diagrams (AS IS / TO BE svg) ---------- */
 .case-flow{ position:relative; margin:0; display:block; } /* position:relative — якорь для
-  .dotmatrix-loader (image-loader.js); сбрасываем дефолтный margin:1em 40px
+  .logo-loader (image-loader.js); сбрасываем дефолтный margin:1em 40px
   у <figure> — иначе схема не дотягивает до полной ширины колонок */
 .case-flow img,
 .case-flow svg{
@@ -477,7 +488,7 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
 }
 
 /* ---------- Screenshots ---------- */
-.case-shot{ position:relative; margin:0; } /* position:relative — якорь для .dotmatrix-loader (image-loader.js) */
+.case-shot{ position:relative; margin:0; } /* position:relative — якорь для .logo-loader (image-loader.js) */
 .case-shot img{
   width:100%;
   height:auto;
@@ -511,8 +522,9 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
    т.к. margin-top тогда одинаковый у обеих. */
 .case-decision__modal{ grid-column:1 / span 4; grid-row:3; margin-top:28px; }
 .case-decision__first{ grid-column:5 / span 8; grid-row:3; margin-top:28px; }
-/* подпись модалки — только на мобиле (см. медиазапрос ниже) */
-.case-decision__modal figcaption{ display:none; }
+/* подпись модалки — только на мобиле (см. медиазапрос ниже);
+   margin-top:0 переопределяет общий отступ 16px у .case-shot figcaption */
+.case-decision__modal figcaption{ display:none; margin-top:0; }
 /* второй экран не является соседом первого в DOM (между ними стрелка-
    картинка) — общее правило .case-shot+.case-shot её не подхватывает,
    отступ нужен отдельно */
@@ -520,9 +532,9 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
 
 @media (max-width:1100px){
   .case-decision__modal{ margin-top:32px; }
-  .case-decision__first{ margin-top:16px; } /* рядом с модалкой — тот же
+  .case-decision__first{ margin-top:32px; } /* рядом с модалкой — тот же
     случай «между картинками», что и общее правило .case-shot+.case-shot */
-  .case-decision__second{ margin-top:16px; }
+  .case-decision__second{ margin-top:32px; }
 }
 
 /* Стрелки-коннекторы (цвет E07E92, готовые файлы) — от радиокнопок в
@@ -623,10 +635,11 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
   content:"";
   position:absolute;
   inset:0;
-  /* яркость блика — средняя rgba-остановка (было 0.18, жёстко белило);
+  /* яркость блика — средняя rgba-остановка (было 0.18, затем 0.1 — всё ещё
+     слишком яркое, слепящий блик; сейчас 0.05);
      мягкость краёв — ширина растяжки от неё до transparent (было 35%/65%,
      т.е. 15% на спад с каждой стороны — уже 25%/75%, спад более плавный) */
-  background:linear-gradient(115deg, transparent 25%, rgba(255,255,255,0.1) 50%, transparent 75%);
+  background:linear-gradient(115deg, transparent 25%, rgba(255,255,255,0.05) 50%, transparent 75%);
   transform:translateX(-130%);
   pointer-events:none;
 }
