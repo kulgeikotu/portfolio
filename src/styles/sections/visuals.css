@@ -68,30 +68,6 @@
   overflow:hidden;
   background:var(--color-hairline);
 }
-/* Тег с названием — поверх картинки, по центру сверху (снизу слева
-   был неприятный наезд на контент превью). Тёмная полупрозрачная
-   подложка + блюр держат читаемость независимо от того, что именно на
-   превью (тёмный мокап, светлая тема, фото и т.д.) — в отличие от
-   .case__nda, которой достаточно 12%, потому что она всегда на светлом
-   --case-accent, а не на произвольной картинке. */
-.visuals-grid__tag{
-  position:absolute;
-  top:18px;
-  left:50%;
-  transform:translateX(-50%);
-  z-index:1;
-  margin:0;
-  padding:6px 10px;
-  border-radius:4px;
-  background:rgba(0,0,0,0.45);
-  backdrop-filter:blur(6px);
-  -webkit-backdrop-filter:blur(6px);
-  color:#fff;
-  font-family:var(--font-body);
-  font-size:0.875rem;
-  line-height:1;
-  white-space:nowrap;
-}
 .visuals-grid__link img{
   width:100%;
   height:100%;
@@ -115,10 +91,6 @@
   }
   .visuals-title{ grid-column:1; }
   .visuals-intro{ grid-column:1; padding-top:8px; }
-
-  /* тайлы теперь на всю ширину (одна колонка) — тег с названием
-     снова влезает, поэтому не скрываем его, как раньше при сетке 2×N */
-  .visuals-grid__tag{ top:14px; }
 
   /* 2 в ряд выходило слишком мелко — просто одна колонка, тайлы друг
      под другом по порядку */

@@ -48,7 +48,7 @@
       <div class="container">
         <ul class="case-list">
           {{#each cases}}
-          <li class="case reveal reveal--fade" id="{{ this.id }}" style="--case-i:{{ @index }}">
+          <li class="case" id="{{ this.id }}" style="--case-i:{{ @index }}">
             <span class="case__tag case__tag--start" aria-hidden="true">{{ this.segment }}</span>
             <span class="case__tag case__tag--end" aria-hidden="true">{{ this.platform }}</span>
             <div class="case__content">
@@ -105,7 +105,6 @@
           {{#each visuals}}
           <li class="visuals-grid__item reveal reveal--fade">
             <a class="visuals-grid__link" href="{{ ../base }}{{ this.href }}">
-              <span class="visuals-grid__tag">{{ this.label }}</span>
               {{#if this.coverMobile}}
               <picture>
                 <source media="(max-width:900px)" srcset="{{ this.coverMobile }}">

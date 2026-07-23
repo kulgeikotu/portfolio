@@ -13,6 +13,7 @@ import { initAnalyticsEvents } from './analytics/events.js';
 import { initEmailCopy } from './email-copy.js';
 import { initImageLoaders } from './image-loader.js';
 import { initVisualKeyNav } from './visual-key-nav.js';
+import { initCaseMobileLink } from './case-mobile-link.js';
 
 // Vercel Analytics — цифры/отвалы. Работает после деплоя на Vercel.
 import { inject, track } from '@vercel/analytics';
@@ -27,6 +28,7 @@ function boot() {
   initEmailCopy();
   initImageLoaders();
   initVisualKeyNav();
+  initCaseMobileLink();
 
   inject();                    // просмотры страниц
   initAnalyticsEvents(track);  // кастомные клики по data-track

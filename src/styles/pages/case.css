@@ -419,18 +419,6 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
   letter-spacing:-0.01em;
 }
 
-/* Шаг схемы (блок/стрелка) — собственный, более крупный шаг задержки, чем
-   у обычных .reveal[data-delay] (0.08s — там незаметно, что элементы
-   появляются по очереди); .reveal.flow-step — три компонента, специфичнее
-   .reveal[data-delay] (два), поэтому переопределяет независимо от порядка
-   правил в файле. */
-.reveal.flow-step[data-delay="1"]{ transition-delay:.25s; }
-.reveal.flow-step[data-delay="2"]{ transition-delay:.5s; }
-.reveal.flow-step[data-delay="3"]{ transition-delay:.75s; }
-.reveal.flow-step[data-delay="4"]{ transition-delay:1s; }
-.reveal.flow-step[data-delay="5"]{ transition-delay:1.25s; }
-.reveal.flow-step[data-delay="6"]{ transition-delay:1.5s; }
-
 /* Цитата (03) — смысловой поворотный момент кейса, поэтому при появлении
    получает не только обычный reveal--fade, но и одноразовый световой
    блик поверх фона картинки (сильнее обычного reveal). */
@@ -635,7 +623,10 @@ div.case-section__text.case-section__text--group{ margin-top:32px; }
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.18) 50%, transparent 65%);
+  /* яркость блика — средняя rgba-остановка (было 0.18, жёстко белило);
+     мягкость краёв — ширина растяжки от неё до transparent (было 35%/65%,
+     т.е. 15% на спад с каждой стороны — уже 25%/75%, спад более плавный) */
+  background:linear-gradient(115deg, transparent 25%, rgba(255,255,255,0.1) 50%, transparent 75%);
   transform:translateX(-130%);
   pointer-events:none;
 }

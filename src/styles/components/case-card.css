@@ -184,6 +184,10 @@
 }
 
 @media (max-width:900px){
+  /* вся карточка кликабельна (см. case-mobile-link.js) — только на мобиле,
+     на десктопе кликабельна/hover-реактивна только обложка (см. выше) */
+  .case{ cursor:pointer; }
+
   .case__tag{ display:none; }
   .case__company{ display:none; }
 
