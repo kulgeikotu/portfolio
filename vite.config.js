@@ -5,7 +5,8 @@ import { readFileSync } from 'fs';
 
 // Базовый путь без слэша на конце — им же префиксуем ссылки в шаблонах,
 // т.к. Vite сам переписывает base только для img/script/link, но не для <a href>.
-const REPO_BASE = '/portfolio';
+// Сайт живёт на кастомном домене kulgeiko.ru в корне, поэтому базовый путь пустой.
+const REPO_BASE = '';
 
 // --- Загружаем словари переводов ---------------------------------
 const ru = JSON.parse(readFileSync(resolve(__dirname, 'src/locales/ru.json'), 'utf-8'));
