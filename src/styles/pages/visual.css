@@ -106,9 +106,10 @@
 .visual-footer__arrow--next{ justify-self:end; }
 
 /* ---------- Контент ----------
-   Скриншоты — уже готовые композиции (напр. лента из 6 экранов), а не
-   элементы на всю ширину сайтового .container (1440) — иначе разъезжаются
-   гигантскими. Держим их в более узкой колонке. */
+   Ширина контента ограничена (960, либо .visual-wide под --container-max) —
+   не элементы на всю ширину сайтового .container (1440), иначе строки из
+   нескольких экранов разъезжаются гигантскими. Держим их в более узкой
+   колонке. */
 .visual-main{
   /* сверху — так, чтобы от края экрана до текста заголовка было ~200px
      (сама верхняя точка блока не совпадает с видимым текстом — у шрифта
@@ -123,11 +124,8 @@
   margin-inline:auto;
 }
 
-.visual-hero{
-  padding-block-end:96px;
-}
 .visual-hero__title{
-  margin:0 0 32px;
+  margin:0 0 64px;
   font-family:var(--font-display);
   font-size:var(--fs-h1);
   font-weight:500;
@@ -150,16 +148,24 @@
 }
 
 /* Несколько скриншотов друг под другом внутри одной секции (напр.
-   пара экранов «Умного дома» или светлая/тёмная версия десктопного
+   пара рядов «Умного дома» или светлая/тёмная версия десктопного
    интерфейса) — без отдельных подзаголовков на каждый. */
 .visual-shot-stack{
   display:flex;
   flex-direction:column;
-  gap:16px;
+  gap:24px;
 }
 
+/* Зазор МЕЖДУ блоками (заголовок/подзаголовок+картинка) — только
+   margin-top у того, что идёт следом (у .visual-hero его нет, он всегда
+   первый блок на странице). Хвостовой отступ перед футером — отдельное
+   правило на :last-child ниже, чтобы не задваивать с этим зазором. */
 .visual-section{
-  padding-block:96px;
+  margin-block-start:104px;
+}
+.visual-main > .visual-hero:last-child,
+.visual-main > .visual-section:last-child{
+  padding-block-end:96px;
 }
 /* «На всю ширину» — для лент/десктопных скриншотов, задуманных на всю
    ширину страницы (с обычными боковыми полями сайта), а не в узкой
@@ -171,7 +177,7 @@
   max-width:none;
 }
 .visual-section__title{
-  margin:0 0 32px;
+  margin:0 0 64px;
   font-family:var(--font-display);
   font-size:40px;
   font-weight:500;
@@ -181,11 +187,12 @@
   text-align:center;
 }
 
-/* Реальный скриншот интерфейса — соотношение сторон разное у десктопной
-   и мобильной версии (мобильная не просто кроп, а другая раскладка,
-   напр. лента из 6 экранов на десктопе -> сетка 2×3 на мобиле), поэтому
-   тот же приём, что и у .case-hero__media: aspect-ratio переменной на
-   фигуре, своя пара --shot-ratio/--shot-ratio-mobile на каждой картинке. */
+/* Реальный скриншот интерфейса — каждая картинка теперь один отдельный
+   экран (не смонтированная лента/пара, как раньше), поэтому у каждой
+   figure свой --shot-ratio под собственные натуральные пропорции PNG
+   (тот же приём, что у .case-hero__media). Одна и та же пропорция
+   используется и на десктопе, и на мобиле — раскладку между брейкпоинтами
+   меняет не картинка, а .visual-shot-row (число колонок). */
 .visual-shot{
   margin:0;
   position:relative; /* якорь для .logo-loader (image-loader.js) */
@@ -198,40 +205,25 @@
   aspect-ratio:var(--shot-ratio);
   object-fit:cover;
 }
-@media (max-width:900px){
-  .visual-shot img{ aspect-ratio:var(--shot-ratio-mobile, var(--shot-ratio)); }
-}
 
-/* Заглушки на месте скриншотов интерфейса — тот же приём, что
-   .case-shot__placeholder/.media-placeholder (серый блок-заглушка
-   до появления реальных ассетов), но адаптирован под тёмную и
-   светлую тему визуалов через currentColor/opacity. Пока используется
-   только на пустых визуалах (2-5) — на визуале 1 уже реальные скриншоты. */
+/* Ряд из нескольких отдельных экранов рядом друг с другом (напр. пара
+   hero-экранов, лента «Добавление эмоции» из 6 штук). Число колонок —
+   через --shot-row-cols на каждом инстансе; --shot-row-cols-mobile
+   переопределяет его только там, где раскладка меняется на мобиле
+   (лента из 6 становится 3×2) — по умолчанию число колонок то же самое,
+   что и на десктопе. */
 .visual-shot-row{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:16px;
+  display:grid;
+  grid-template-columns:repeat(var(--shot-row-cols, 2), 1fr);
+  gap:24px;
 }
-.visual-shot__placeholder{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  aspect-ratio:375/812;
-  border-radius:8px;
-  background:color-mix(in srgb, currentColor 8%, transparent);
-  font-family:var(--font-body);
-  font-size:14px;
-  line-height:1.4;
-  text-align:center;
-  color:color-mix(in srgb, currentColor 45%, transparent);
-  padding:16px;
-  box-sizing:border-box;
+/* Пара экранов рядом (не лента/сетка) — визуал 1 (hero), визуал 2/5
+   (оба ряда) — в полную ширину колонки смотрится слишком крупно, поэтому
+   дополнительно сужаем и центрируем. */
+.visual-shot-row--narrow{
+  max-width:648px;
+  margin-inline:auto;
 }
-
-.visual-shot-row--hero .visual-shot__placeholder{ width:min(320px, 42vw); }
-.visual-shot-row--thumbs .visual-shot__placeholder{ width:min(140px, 26vw); }
-.visual-shot-row--mid .visual-shot__placeholder{ width:min(220px, 32vw); }
 
 /* Пустые страницы (визуалы без контента ещё) */
 .visual-empty{
@@ -249,17 +241,20 @@
 }
 
 @media (max-width:900px){
-  .visual-hero{ padding-block-end:64px; }
   .visual-hero__title{
-    margin-bottom:24px;
+    margin-bottom:40px;
     font-size:32px;
   }
-  .visual-section{ padding-block:64px; }
+  .visual-section{ margin-block-start:64px; }
+  .visual-main > .visual-hero:last-child,
+  .visual-main > .visual-section:last-child{ padding-block-end:64px; }
   .visual-section__title{
-    margin-bottom:24px;
+    margin-bottom:40px;
     font-size:24px;
   }
-  .visual-shot-row--hero .visual-shot__placeholder{ width:min(220px, 60vw); }
-  .visual-shot-row--thumbs .visual-shot__placeholder{ width:min(100px, 40vw); }
-  .visual-shot-row--mid .visual-shot__placeholder{ width:min(160px, 48vw); }
+  .visual-shot-stack{ gap:8px; }
+  .visual-shot-row{
+    grid-template-columns:repeat(var(--shot-row-cols-mobile, var(--shot-row-cols, 2)), 1fr);
+    gap:8px;
+  }
 }

@@ -18,7 +18,8 @@
   opacity:0;
   pointer-events:none;
 }
-.logo-loader__icon{
+.logo-loader__icon,
+.case-flow .logo-loader__icon{
   width:32px;
   height:32px;
   color:#908F8F;

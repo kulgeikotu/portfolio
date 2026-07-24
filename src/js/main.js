@@ -9,14 +9,19 @@ import { initActiveNav } from './active-nav.js';
 import { initCaseHeaderScroll } from './case-header-scroll.js';
 import { initLangSwitch } from './lang-switch.js';
 import { initAnimations } from './animations/index.js';
-import { initAnalyticsEvents } from './analytics/events.js';
 import { initEmailCopy } from './email-copy.js';
 import { initImageLoaders } from './image-loader.js';
 import { initVisualKeyNav } from './visual-key-nav.js';
 import { initCaseMobileLink } from './case-mobile-link.js';
 
-// Vercel Analytics — цифры/отвалы. Работает после деплоя на Vercel.
-import { inject, track } from '@vercel/analytics';
+// Vercel Analytics — просмотры страниц и кастомные клики по data-track.
+// Пока закомментировано: Web Analytics ещё не включена в дашборде Vercel
+// (Settings → Analytics), без неё inject() дёргает несуществующий
+// /_vercel/insights/script.js и сыпет 404 в консоли. Next step — см. README
+// «Что дальше по контенту». Раскомментировать вместе с вызовами ниже после
+// включения тумблера.
+// import { initAnalyticsEvents } from './analytics/events.js';
+// import { inject, track } from '@vercel/analytics';
 
 function boot() {
   initMobileMenu();
@@ -30,8 +35,8 @@ function boot() {
   initVisualKeyNav();
   initCaseMobileLink();
 
-  inject();                    // просмотры страниц
-  initAnalyticsEvents(track);  // кастомные клики по data-track
+  // inject();                    // просмотры страниц
+  // initAnalyticsEvents(track);  // кастомные клики по data-track
 }
 
 if (document.readyState === 'loading') {
